@@ -1,0 +1,32 @@
+// 8-directional movement for a playable character
+void Move()
+{
+ // speed settings
+ speed += acceleration;
+ if (speed > maxSpeed) speed = maxSpeed;
+
+ // temporary variables for initial X and Y changes
+ double deltaX = 0;
+ double deltaY = 0;
+ 
+ // calculating initial X and Y changes
+ if (WPressed) deltaY -= speed;
+ if (SPressed) deltaY += speed;
+ if (APressed) deltaX -= speed;
+ if (DPressed) deltaX += speed;
+
+ // if X or Y is 0, there's no need for further calculation
+ if (deltaX == 0 || deltaY == 0)
+ {
+  LocationX += deltaX;
+  LocationY += deltaY;
+ }
+ 
+ // if both X and Y change, the actual amount of movement has to be re-evaluated so that the movement area is not a square but rather a stop-sign
+ // this way speed stays the same regardless of the direction of the movement
+ else
+ {
+  LocationX += Cos 45 * deltaX;
+  LocationY += Sin 45 * deltaX;
+ }
+}
