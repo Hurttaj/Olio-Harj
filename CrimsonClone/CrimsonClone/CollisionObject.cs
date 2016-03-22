@@ -27,7 +27,7 @@ namespace CrimsonClone
         public Vector2 Center { get; set; }
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
-        public CollisionObject(Vector2 center, float radius)
+        public CollisionObject(Vector2 center, double radius)
         {
             Center = center;
             Radius = radius;
