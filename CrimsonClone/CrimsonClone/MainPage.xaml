@@ -42,14 +42,14 @@
                 Click="PlayButton_Click"
                 />
             <Button
-                x:Name="ScoresButton"
+                x:Name="ScoreButton"
                 Content="High-Scores"
                 HorizontalAlignment="Center"
                 Width="100"
                 Margin="5"
                 Foreground="Black"
                 Background="LightGray"
-                Click="ScoresButton_Click"
+                Click="ScoreButton_Click"
                 />
             <Button
                 x:Name="HelpButton"

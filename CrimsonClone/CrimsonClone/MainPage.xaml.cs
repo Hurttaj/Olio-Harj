@@ -33,22 +33,22 @@ namespace CrimsonClone
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(GamePage));
         }
 
-        private void ScoresButton_Click(object sender, RoutedEventArgs e)
+        private void ScoreButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(ScorePage));
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(HelpPage));
         }
 
         private void CreditsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(CreditsPage));
         }
     }
 }
