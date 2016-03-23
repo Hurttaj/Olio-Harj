@@ -25,6 +25,7 @@ namespace CrimsonClone
         // some functionality we would otherwise have to code ourselves.
         // Could add encapsulation to make sure Vector2 values cannot be out of bounds of the XAML canvas.
         // 23.3 Encapsulation added.
+
         private Vector2 center;
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
@@ -77,9 +78,12 @@ namespace CrimsonClone
         // than the difference between radii, the circles necessarily intersect.
         // It's a bool, so it returns a true/false value. So if this method returns true,
         // we can have that trigger collision mechanics.
+        // http://rbwhitaker.wikidot.com/circle-collision-detection
+        // Object1.Collision(Object2)
+        // Revised collision math.
         public bool Collision(CollisionObject collisionObject)
         {
-            return ((collisionObject.Center - Center).Length() < (collisionObject.radius - radius));
+            return (Math.Abs((collisionObject.Center - Center).Length()) < (collisionObject.radius + radius));
         }
 
         // Placeholder.
