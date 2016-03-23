@@ -5,9 +5,72 @@
     xmlns:local="using:CrimsonClone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Width="800"
+    Height="600">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid>
+        <StackPanel 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            Background="WhiteSmoke"
+            BorderBrush="Gray"
+            BorderThickness="3"
+            Padding="15">
+            <TextBlock 
+                Text="Crimsonclone" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Foreground="#900" 
+                FontSize="45"
+                FontWeight="Black"
+                />
+            <TextBlock
+                Text="Version 1.0"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                />
+            <Button
+                x:Name="PlayButton"
+                Content="Play"
+                HorizontalAlignment="Center"
+                Width="100"
+                Margin="5"
+                Foreground="Black"
+                Background="LightGray"
+                Click="PlayButton_Click"
+                />
+            <Button
+                x:Name="ScoresButton"
+                Content="High-Scores"
+                HorizontalAlignment="Center"
+                Width="100"
+                Margin="5"
+                Foreground="Black"
+                Background="LightGray"
+                Click="ScoresButton_Click"
+                />
+            <Button
+                x:Name="HelpButton"
+                Content="Help"
+                HorizontalAlignment="Center"
+                Width="100"
+                Margin="5"
+                Foreground="Black"
+                Background="LightGray"
+                Click="HelpButton_Click"
+                />
+            <Button
+                x:Name="CreditsButton"
+                Content="Credits"
+                HorizontalAlignment="Center"
+                Width="100"
+                Margin="5"
+                Foreground="Black"
+                Background="LightGray"
+                Click="CreditsButton_Click"
+                />
+        </StackPanel>
     </Grid>
 </Page>
