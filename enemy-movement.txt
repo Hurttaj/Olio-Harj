@@ -19,18 +19,32 @@ public void Move()
  double Angle = Math.Atan(deltaY / deltaX) * 180 / Math.PI;
 
  // actual X and Y coordinate calculations
- if (deltaX == 0 && deltaY != 0)
- {
-  LocationX += speed;
- }
- else if (deltaX != 0 && deltaY == 0)
+ if (deltaX == 0 && deltaY > 0)
  {
   LocationY += speed;
  }
+ else if (deltaX == 0 && deltaY < 0)
+ {
+  LocationY -= speed;
+ }
+
+ else if (deltaX > 0 && deltaY == 0)
+ {
+  LocationY += speed;
+ }
+ else if (deltaX < 0 && deltaY == 0)
+ {
+  LocationY -= speed;
+ }
  // this might be broken
- else if (deltaX != 0 && deltaY != 0)
+ else if (deltaX > 0 && deltaY > 0)
  {
   LocationX += (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
   LocationY += (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
+ }
+ else if (deltaX < 0 && deltaY < 0)
+ {
+  LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
+  LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
  }
 }
