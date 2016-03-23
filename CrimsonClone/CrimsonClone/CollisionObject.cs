@@ -15,7 +15,7 @@ namespace CrimsonClone
     using System.Threading.Tasks;
 
 
-    class CollisionObject
+    abstract class CollisionObject
     {
         // speed and radius properties. Marked private so I can exclude negative values.
         // Theoretically using unsigned doubles would also work, but it would probably crash the game if these properties got a negative value.
@@ -24,7 +24,8 @@ namespace CrimsonClone
         // From the System.Numerics library. Seems like this is easier than having separate coordinate properties. The library contains
         // some functionality we would otherwise have to code ourselves.
         // Could add encapsulation to make sure Vector2 values cannot be out of bounds of the XAML canvas.
-        public Vector2 Center { get; set; }
+        // 23.3 Encapsulation added.
+        private Vector2 center;
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
         public CollisionObject(Vector2 center, double radius)
@@ -57,6 +58,21 @@ namespace CrimsonClone
             }
         }
 
+        // Encapsulating the Vector2 attribute. Seems like "UnitX.ToPoint().X" is the numeric value of the X-coordinate in the Vector2 struct. This public attribute
+        // prevents the Vector2 coordinates of the center attribute from being less than 0 or more than 600 (Y) or 800 (X).
+        // This is what I'm currently assuming the size of the canvas is, but that can be changed.
+        public Vector2 Center
+        {
+            get { return center; }
+            set
+            {
+                if (Vector2.UnitX.ToPoint().X >= 0 & Vector2.UnitX.ToPoint().X <= 800 & Vector2.UnitY.ToPoint().Y >= 0 & Vector2.UnitY.ToPoint().Y <= 600)
+                {
+                    center = value;
+                }
+            }
+        }
+
         // Collision math. Basically, if the distance between the centers of the circles is smaller
         // than the difference between radii, the circles necessarily intersect.
         // It's a bool, so it returns a true/false value. So if this method returns true,
@@ -67,10 +83,7 @@ namespace CrimsonClone
         }
 
         // Placeholder.
-        public void move()
-        {
-            Debug.WriteLine("Do something!");
-        }
+        public abstract void move();
 
     }
 }
