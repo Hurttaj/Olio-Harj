@@ -22,17 +22,17 @@ public void Move()
     // sign returns 1 if given number is positive, and -1 if it's negative
     if (deltaX == 0 && deltaY != 0)
     {
-       LocationY += speed * sign(deltaY);
+       LocationY += speed * Math.Sign(deltaY);
     }
 
     else if (deltaX != 0 && deltaY == 0)
     {
-       LocationY += speed * sign(deltaX);
+       LocationY += speed * Math.Sign(deltaX);
     }
     
     else if (deltaX != 0 && deltaY != 0)
     {
-       LocationX += (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed * sign(deltaX);
-       LocationY += (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed * sign(deltaY);
+       LocationX += (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed * Math.Sign(deltaX);
+       LocationY += (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed * Math.Sign(deltaY);
     }
 }
