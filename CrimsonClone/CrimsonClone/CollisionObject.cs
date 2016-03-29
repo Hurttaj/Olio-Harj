@@ -83,7 +83,7 @@ namespace CrimsonClone
         // Revised collision math.
         public bool Collision(CollisionObject collisionObject)
         {
-            return (Math.Abs((collisionObject.Center - Center).Length()) < (collisionObject.radius + radius));
+            return (Math.Abs((collisionObject.Center - Center).Length()) <= (collisionObject.radius + radius));
         }
 
         // Placeholder.
