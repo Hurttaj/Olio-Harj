@@ -22,6 +22,8 @@ namespace CrimsonClone
         public DrawPlayerCharacter()
         {
             this.InitializeComponent();
+
+
         }
     }
 }
