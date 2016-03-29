@@ -17,9 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CrimsonClone
 {
-    public sealed partial class PlayerCharacter
+    public sealed partial class DrawPlayerCharacter : UserControl
     {
-        public PlayerCharacter()
+        public DrawPlayerCharacter()
         {
             this.InitializeComponent();
         }

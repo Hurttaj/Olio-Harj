@@ -111,8 +111,8 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Controls\PlayerCharacter.xaml.cs">
-      <DependentUpon>PlayerCharacter.xaml</DependentUpon>
+    <Compile Include="User Controls\DrawPlayerCharacter.xaml.cs">
+      <DependentUpon>DrawPlayerCharacter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\ScorePage.xaml.cs">
@@ -156,7 +156,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="User Controls\PlayerCharacter.xaml">
+    <Page Include="User Controls\DrawPlayerCharacter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
