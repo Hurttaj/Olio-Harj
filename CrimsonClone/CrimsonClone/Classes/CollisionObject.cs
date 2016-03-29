@@ -16,11 +16,11 @@ namespace CrimsonClone
     using System.Threading.Tasks;
 
 
-    abstract class CollisionObject
+    public abstract class CollisionObject
     {
         // speed and radius properties. Marked private so I can exclude negative values.
         // Theoretically using unsigned doubles would also work, but it would probably crash the game if these properties got a negative value.
-        private double speed;
+        private double speed = 0;
         private double radius;
         // From the System.Numerics library. Seems like this is easier than having separate coordinate properties. The library contains
         // some functionality we would otherwise have to code ourselves.
