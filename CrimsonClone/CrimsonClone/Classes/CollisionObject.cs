@@ -93,7 +93,7 @@ namespace CrimsonClone
         }
 
         // Placeholder.
-        public abstract void move();
+        public abstract void Move(int dirX, int dirY);
 
     }
 }

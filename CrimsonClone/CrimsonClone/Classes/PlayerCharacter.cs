@@ -14,13 +14,12 @@ namespace CrimsonClone.Classes
         private double speed = 0;
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
-        public PlayerCharacter(Vector2 center, double radius)
+        public PlayerCharacter(double radius)
         {
-            Center = center;
             Radius = radius;
         }
 
-        public void Move (int dirX, int dirY)
+        public override void Move (int dirX, int dirY)
         {
             // speed settings; speed and acceleration are defined in class's private fields
             speed += accelerate;
@@ -29,8 +28,8 @@ namespace CrimsonClone.Classes
             // if X or Y change is 0, there's no need for further calculation
             if (dirX == 0 || dirY == 0)
             {
-                LocationX += speed * dirX;
-                LocationY += speed * dirY;
+                PositionX += (float)speed * dirX;
+                PositionY += (float)speed * dirY;
             }
             
             // if both X and Y change, the actual amount of movement has to be re-evaluated so that the movement area is not a square but rather a stop-sign
@@ -38,8 +37,8 @@ namespace CrimsonClone.Classes
             else
             {
                 // (Math.PI/4) is 45 degrees in radians
-                LocationX += Math.Cos(Math.PI/4) * dirX * speed;
-                LocationY += Math.Sin(Math.PI/4) * dirY * speed;
+                PositionX += (float)Math.Cos(Math.PI/4) * dirX * (float)speed;
+                PositionY += (float)Math.Sin(Math.PI/4) * dirY * (float)speed;
             } 
         }
         
