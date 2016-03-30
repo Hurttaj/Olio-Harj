@@ -24,6 +24,9 @@ namespace CrimsonClone
     /// </summary>
     public sealed partial class GamePage : Page
     {
+        // player character drawer
+        private DrawPlayerCharacter player;
+
         // Creat game loop timer
         private DispatcherTimer timer;
 
@@ -34,6 +37,9 @@ namespace CrimsonClone
         private bool RightPressed;
         private bool LMBPressed;
 
+        // canvas sizes
+        private float CanvasWidth;
+        private float CanvasHeight;
 
         public GamePage()
         {
@@ -43,18 +49,26 @@ namespace CrimsonClone
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
 
+            // initializing canwas size data
+            CanvasWidth = (float)GameCanvas.Width;
+            CanvasHeight = (float)GameCanvas.Height;
+
+            // create player
+            player = new DrawPlayerCharacter(CanvasWidth / 2, CanvasHeight / 2);
+            GameCanvas.Children.Add(player);
+            player.UpdatePosition(); 
+
             // Creat game loop timer 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1000 / 60);
             timer.Start();
-
-
         }
 
         private void Timer_Tick(object sender, object e)
         {
             //if (UpPressed) Player.Move();
+            player.UpdatePosition();
         }
 
         private void CoreWindow_KeyUp(CoreWindow sender, KeyEventArgs args)

@@ -21,22 +21,24 @@ namespace CrimsonClone
 {
     public sealed partial class DrawPlayerCharacter : UserControl
     {
-        public PlayerCharacter player;
+        public PlayerCharacter playerCharacter;
 
-        public DrawPlayerCharacter()
+        public DrawPlayerCharacter(float positionX, float positionY)
         {
             this.InitializeComponent();
 
             Width = 16;
             Height = 16;
             
-            player = new PlayerCharacter(Width / 2);
+            playerCharacter = new PlayerCharacter(Width / 2);
+            playerCharacter.PositionX = positionX;
+            playerCharacter.PositionY = positionY;
         }
 
         public void UpdatePosition()
         {
-            SetValue(Canvas.LeftProperty, player.PositionX);
-            SetValue(Canvas.TopProperty, player.PositionY);
+            SetValue(Canvas.LeftProperty, playerCharacter.PositionX);
+            SetValue(Canvas.TopProperty, playerCharacter.PositionY);
         }
     }
 }

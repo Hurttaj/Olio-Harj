@@ -9,7 +9,7 @@
     Width="800"
     Height="600">
 
-    <Grid Background="LightGray">
+    <Grid Background="Transparent">
         <RelativePanel VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock x:Name="textScore" Text="Score: "
                        Foreground="Black" Padding="0,0,5,0"/>
@@ -25,7 +25,7 @@
             x:Name="GameCanvas"
             Width="800"
             Height="600"
-            Background="Orange"
+            Background="Transparent"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             />

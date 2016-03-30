@@ -62,7 +62,7 @@ namespace CrimsonClone
             get { return positionY; }
             set
             {
-                if (value >= 600 && value <= 0) positionY = value;
+                if (value <= 600 && value >= 0) positionY = value;
                 else throw new System.ArgumentException("Object outside canvas.");
             }
         }
@@ -72,7 +72,7 @@ namespace CrimsonClone
             get { return positionX; }
             set
             {
-                if (value >= 800 && value <= 0) positionX = value;
+                if (value <= 800 && value >= 0) positionX = value;
                 else throw new System.ArgumentException("Object outside canvas.");
             }
         }

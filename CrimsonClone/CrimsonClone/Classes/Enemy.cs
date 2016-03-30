@@ -35,8 +35,9 @@ namespace CrimsonClone.Classes
             double deltaX = 0;
             double deltaY = 0;
             // player refers to main player character
-            float dirX = player.LocationX;
-            float dirY = player.LocationY;
+            // TODO: fix the references
+            float dirX = 1/*player.LocationX*/;
+            float dirY = 1/*player.LocationY*/;
 
             // calculating the difference between player and enemy coordinates
             deltaX = dirX - PositionX;
