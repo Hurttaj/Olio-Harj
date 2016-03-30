@@ -9,8 +9,9 @@ namespace CrimsonClone.Classes
 {
     public class PlayerCharacter : CollisionObject
     {
-        private readonly double MaxSpeed = 15.0;
-        private readonly double Accelerate = 0.7;
+        private readonly double maxSpeed = 15.0;
+        private readonly double accelerate = 0.7;
+        private double speed = 0;
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
         public PlayerCharacter(Vector2 center, double radius)
@@ -19,16 +20,10 @@ namespace CrimsonClone.Classes
             Radius = radius;
         }
 
-        public override void move()
-        {
-            throw new NotImplementedException();
-        }
-
-        /*
-        void Move (int dirX, int dirY)
+        public void Move (int dirX, int dirY)
         {
             // speed settings; speed and acceleration are defined in class's private fields
-            speed += acceleration;
+            speed += accelerate;
             if (speed > maxSpeed) speed = maxSpeed;
             
             // if X or Y change is 0, there's no need for further calculation
@@ -47,6 +42,6 @@ namespace CrimsonClone.Classes
                 LocationY += Math.Sin(Math.PI/4) * dirY * speed;
             } 
         }
-        */
+        
     }
 }
