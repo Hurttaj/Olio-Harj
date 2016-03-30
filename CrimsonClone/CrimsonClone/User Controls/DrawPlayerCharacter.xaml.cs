@@ -21,8 +21,7 @@ namespace CrimsonClone
 {
     public sealed partial class DrawPlayerCharacter : UserControl
     {
-        private PlayerCharacter player;
-        Vector2 myVector = new Vector2(1, 1);
+        public PlayerCharacter player;
 
         public DrawPlayerCharacter()
         {
@@ -36,8 +35,8 @@ namespace CrimsonClone
 
         public void UpdatePosition()
         {
-            SetValue(Canvas.LeftProperty, myVector);
-            SetValue(Canvas.TopProperty, myVector);
+            SetValue(Canvas.LeftProperty, player.PositionX);
+            SetValue(Canvas.TopProperty, player.PositionY);
         }
     }
 }

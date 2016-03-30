@@ -34,6 +34,7 @@ namespace CrimsonClone.Classes
             // temporary variables for initial X and Y changes and for player location
             double deltaX = 0;
             double deltaY = 0;
+            // player refers to main player character
             float dirX = player.LocationX;
             float dirY = player.LocationY;
 
