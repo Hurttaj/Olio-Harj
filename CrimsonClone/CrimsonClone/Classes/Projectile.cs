@@ -16,5 +16,15 @@ namespace CrimsonClone.Classes
             PositionX = positionX;
             PositionY = positionY;
         }
+
+        public override void Move()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Move(int dirX, int dirY)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

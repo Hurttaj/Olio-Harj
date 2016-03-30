@@ -18,18 +18,27 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CrimsonClone.User_Controls
 {
-    public sealed partial class DrawProjectile : UserControl
+    public sealed partial class DrawEnemyCharacter : UserControl
     {
-        public Projectile bullet;
-
-        public DrawProjectile()
+        public Enemy enemyCharacter;
+        
+        public DrawEnemyCharacter(float positionX, float positionY)
         {
             this.InitializeComponent();
 
-            Width = 6;
-            Height = 6;
+            Width = 12;
+            Height = 12;
 
-            bullet = new Projectile(Width / 2, player.PositionX, player.PositionY);
+            enemyCharacter = new Enemy(Width / 2);
+            enemyCharacter.PositionX = positionX;
+            enemyCharacter.PositionY = positionY;
+
+        }
+
+        public void UpdatePosition()
+        {
+            SetValue(Canvas.LeftProperty, enemyCharacter.PositionX);
+            SetValue(Canvas.TopProperty, enemyCharacter.PositionY);
         }
     }
 }

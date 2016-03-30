@@ -15,11 +15,11 @@ namespace CrimsonClone.Classes
         private double speed = 0;
 
         // Variables that express pressed key
-        private bool UpPressed;
-        private bool DownPressed;
-        private bool LeftPressed;
-        private bool RightPressed;
-        private bool LMBPressed;
+        public bool UpPressed;
+        public bool DownPressed;
+        public bool LeftPressed;
+        public bool RightPressed;
+        public bool LMBPressed;
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
         public PlayerCharacter(double radius)
