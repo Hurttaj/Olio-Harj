@@ -27,7 +27,7 @@ namespace CrimsonClone.Classes
             Radius = radius;
         }
 
-        public override void Move (int dirX, int dirY)
+        /*public override void Move (int dirX, int dirY)
         {
             // speed settings; speed and acceleration are defined in class's private fields
             speed += accelerate;
@@ -48,7 +48,7 @@ namespace CrimsonClone.Classes
                 PositionX += (float)Math.Cos(Math.PI/4) * dirX * (float)speed;
                 PositionY += (float)Math.Sin(Math.PI/4) * dirY * (float)speed;
             } 
-        }
+        }*/
 
         public override void Move()
         {

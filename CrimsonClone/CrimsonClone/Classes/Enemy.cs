@@ -65,9 +65,9 @@ namespace CrimsonClone.Classes
             }
         }
 
-        public override void Move(int dirX, int dirY)
+        /*public override void Move(int dirX, int dirY)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

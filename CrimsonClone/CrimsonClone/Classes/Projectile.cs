@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrimsonClone.Classes
 {
-    class Projectile : CollisionObject
+    public class Projectile : CollisionObject
     {
         public readonly float Speed = 30;
 
@@ -22,9 +22,9 @@ namespace CrimsonClone.Classes
             throw new NotImplementedException();
         }
 
-        public override void Move(int dirX, int dirY)
+        /*public override void Move(int dirX, int dirY)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

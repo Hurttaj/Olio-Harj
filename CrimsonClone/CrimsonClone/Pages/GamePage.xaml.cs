@@ -31,11 +31,12 @@ namespace CrimsonClone
         private DispatcherTimer timer;
 
         // Variables that express pressed key
-        private bool UpPressed;
+        // NOW REDUNDANT
+        /*private bool UpPressed;
         private bool DownPressed;
         private bool LeftPressed;
         private bool RightPressed;
-        private bool LMBPressed;
+        private bool LMBPressed;*/
 
         // canvas sizes
         private float CanvasWidth;
@@ -67,7 +68,7 @@ namespace CrimsonClone
 
         private void Timer_Tick(object sender, object e)
         {
-            //if (UpPressed) Player.Move();
+            player.playerCharacter.Move();
             player.UpdatePosition();
         }
 
@@ -79,13 +80,13 @@ namespace CrimsonClone
                     player.playerCharacter.UpPressed = false;
                     break;
                 case VirtualKey.S:
-                    player.playerCharacter.UpPressed = false;
+                    player.playerCharacter.DownPressed = false;
                     break;
                 case VirtualKey.D:
-                    player.playerCharacter.LeftPressed = false;
+                    player.playerCharacter.RightPressed = false;
                     break;
                 case VirtualKey.A:
-                    player.playerCharacter.RightPressed = false;
+                    player.playerCharacter.LeftPressed = false;
                     break;
                 case VirtualKey.LeftButton:
                     player.playerCharacter.LMBPressed = false;
@@ -108,10 +109,10 @@ namespace CrimsonClone
                     player.playerCharacter.DownPressed = true;
                     break;
                 case VirtualKey.D:
-                    player.playerCharacter.LeftPressed = true;
+                    player.playerCharacter.RightPressed = true;
                     break;
                 case VirtualKey.A:
-                    player.playerCharacter.RightPressed = true;
+                    player.playerCharacter.LeftPressed = true;
                     break;
                 case VirtualKey.LeftButton:
                     player.playerCharacter.LMBPressed = true;

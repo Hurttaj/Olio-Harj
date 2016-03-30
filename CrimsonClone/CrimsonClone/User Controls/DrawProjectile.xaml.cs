@@ -29,7 +29,7 @@ namespace CrimsonClone.User_Controls
             Width = 6;
             Height = 6;
 
-            bullet = new Projectile(Width / 2, player.PositionX, player.PositionY);
+            //bullet = new Projectile(Width / 2, player.PositionX, player.PositionY);
         }
     }
 }
