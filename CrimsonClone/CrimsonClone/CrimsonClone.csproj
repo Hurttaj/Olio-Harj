@@ -116,6 +116,9 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\DrawEnemyCharacter.xaml.cs">
+      <DependentUpon>DrawEnemyCharacter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\DrawPlayerCharacter.xaml.cs">
       <DependentUpon>DrawPlayerCharacter.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User Controls\DrawEnemyCharacter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

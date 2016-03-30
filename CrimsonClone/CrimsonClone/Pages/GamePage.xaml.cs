@@ -76,19 +76,19 @@ namespace CrimsonClone
             switch (args.VirtualKey)
             {
                 case VirtualKey.W:
-                    UpPressed = false;
+                    player.playerCharacter.UpPressed = false;
                     break;
                 case VirtualKey.S:
-                    UpPressed = false;
+                    player.playerCharacter.UpPressed = false;
                     break;
                 case VirtualKey.D:
-                    LeftPressed = false;
+                    player.playerCharacter.LeftPressed = false;
                     break;
                 case VirtualKey.A:
-                    RightPressed = false;
+                    player.playerCharacter.RightPressed = false;
                     break;
                 case VirtualKey.LeftButton:
-                    LMBPressed = false;
+                    player.playerCharacter.LMBPressed = false;
                     break;
                 default:
                     break;
@@ -102,19 +102,19 @@ namespace CrimsonClone
             switch (args.VirtualKey)
             {
                 case VirtualKey.W:
-                    UpPressed = true;
+                    player.playerCharacter.UpPressed = true;
                     break;
                 case VirtualKey.S:
-                    DownPressed = true;
+                    player.playerCharacter.DownPressed = true;
                     break;
                 case VirtualKey.D:
-                    LeftPressed = true;
+                    player.playerCharacter.LeftPressed = true;
                     break;
                 case VirtualKey.A:
-                    RightPressed = true;
+                    player.playerCharacter.RightPressed = true;
                     break;
                 case VirtualKey.LeftButton:
-                    LMBPressed = true;
+                    player.playerCharacter.LMBPressed = true;
                     break;
                 default:
                     break;
