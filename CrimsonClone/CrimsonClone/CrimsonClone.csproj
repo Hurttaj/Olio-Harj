@@ -122,6 +122,9 @@
     <Compile Include="Pages\ScorePage.xaml.cs">
       <DependentUpon>ScorePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\DrawProjectile.xaml.cs">
+      <DependentUpon>DrawProjectile.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ScorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\DrawProjectile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
