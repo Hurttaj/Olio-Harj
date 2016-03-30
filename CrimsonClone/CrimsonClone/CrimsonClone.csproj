@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\PlayerCharacter.cs" />
+    <Compile Include="Classes\Projectile.cs" />
     <Compile Include="Pages\CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
@@ -115,15 +116,15 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Controls\DrawEnemyCharacter.xaml.cs">
-      <DependentUpon>DrawEnemyCharacter.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Controls\DrawPlayerCharacter.xaml.cs">
       <DependentUpon>DrawPlayerCharacter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\ScorePage.xaml.cs">
       <DependentUpon>ScorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\DrawProjectile.xaml.cs">
+      <DependentUpon>DrawProjectile.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -163,15 +164,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="User Controls\DrawEnemyCharacter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="User Controls\DrawPlayerCharacter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ScorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\DrawProjectile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
