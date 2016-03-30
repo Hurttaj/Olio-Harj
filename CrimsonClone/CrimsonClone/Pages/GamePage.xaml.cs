@@ -32,6 +32,7 @@ namespace CrimsonClone
         private bool DownPressed;
         private bool LeftPressed;
         private bool RightPressed;
+        private bool LMBPressed;
 
 
         public GamePage()
@@ -72,6 +73,9 @@ namespace CrimsonClone
                 case VirtualKey.A:
                     RightPressed = false;
                     break;
+                case VirtualKey.LeftButton:
+                    LMBPressed = false;
+                    break;
                 default:
                     break;
             }
@@ -94,6 +98,9 @@ namespace CrimsonClone
                     break;
                 case VirtualKey.A:
                     RightPressed = true;
+                    break;
+                case VirtualKey.LeftButton:
+                    LMBPressed = true;
                     break;
                 default:
                     break;
