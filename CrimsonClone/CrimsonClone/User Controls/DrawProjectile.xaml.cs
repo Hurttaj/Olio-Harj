@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrimsonClone.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,11 +18,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CrimsonClone.User_Controls
 {
-    public sealed partial class Projectile : UserControl
+    public sealed partial class DrawProjectile : UserControl
     {
         public Projectile bullet;
 
-        public void DrawProjectile()
+        public DrawProjectile()
         {
             this.InitializeComponent();
 
