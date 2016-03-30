@@ -58,8 +58,8 @@ namespace CrimsonClone.Classes
 
             else if (deltaX != 0 && deltaY != 0)
             {
-                PositionX += (float)(Math.Cos(Angle)) * (float)speed * (float)Math.Sign(deltaX);
-                PositionY += (float)(Math.Sin(Angle)) * (float)speed * (float)Math.Sign(deltaY);
+                PositionX += (float)(Math.Cos(Angle)) * (float)speed * Math.Sign(deltaX);
+                PositionY += (float)(Math.Sin(Angle)) * (float)speed * Math.Sign(deltaY);
             }
         }
 

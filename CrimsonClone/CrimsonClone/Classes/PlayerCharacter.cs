@@ -46,5 +46,11 @@ namespace CrimsonClone.Classes
         {
             throw new NotImplementedException();
         }
+
+
+        public void FireWeapon()
+        {
+
+        }
     }
 }

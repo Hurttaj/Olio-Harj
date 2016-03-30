@@ -39,10 +39,5 @@ namespace CrimsonClone
             SetValue(Canvas.LeftProperty, myVector);
             SetValue(Canvas.TopProperty, myVector);
         }
-
-        public void FireWeapon()
-        {
-
-        }
     }
 }
