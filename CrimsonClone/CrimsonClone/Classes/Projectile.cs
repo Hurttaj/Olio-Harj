@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrimsonClone.Classes
 {
-    class Projectile
+    class Projectile : CollisionObject
     {
         public readonly float Speed = 30;
 
