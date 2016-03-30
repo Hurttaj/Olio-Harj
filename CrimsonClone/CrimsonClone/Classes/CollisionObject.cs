@@ -56,7 +56,7 @@ namespace CrimsonClone
         }
 
         // Encapsulation for coordinate attributes. This ensures no object can leave the canvas.
-        // Their possible positions are bounded within the canvas.
+        // Their possible positions are vo
         public float PositionY
         {
             get { return positionY; }
@@ -85,9 +85,11 @@ namespace CrimsonClone
         // Object1.Collision(Object2)
         // Revised collision math.
         // Revised again for x and y coordinates based code.
+        // Math.Pow is a method that raises a given value to a power.
         public bool Collision(CollisionObject collisionObject)
         {
-            return ((positionX - collisionObject.positionX) ^ 2 + (positionY - collisionObject.positionY) ^ 2 <= (radius + collisionObject.radius) ^ 2);
+            return (Math.Pow((positionX - collisionObject.positionX), 2) + Math.Pow((positionY - collisionObject.positionY), 2) <= Math.Pow((radius + collisionObject.radius), 2));
+
         }
 
         // Placeholder.
