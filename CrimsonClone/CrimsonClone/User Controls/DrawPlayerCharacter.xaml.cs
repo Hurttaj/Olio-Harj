@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CrimsonClone.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -17,11 +19,24 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CrimsonClone
 {
-    public sealed partial class PlayerCharacter : UserControl
+    public sealed partial class DrawPlayerCharacter : UserControl
     {
-        public PlayerCharacter()
+        public PlayerCharacter player;
+
+        public DrawPlayerCharacter()
         {
             this.InitializeComponent();
+
+            Width = 16;
+            Height = 16;
+            
+            player = new PlayerCharacter(Width / 2);
+        }
+
+        public void UpdatePosition()
+        {
+            SetValue(Canvas.LeftProperty, player.PositionX);
+            SetValue(Canvas.TopProperty, player.PositionY);
         }
     }
 }
