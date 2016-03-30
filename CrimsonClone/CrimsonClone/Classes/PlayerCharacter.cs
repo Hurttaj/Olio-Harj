@@ -9,9 +9,17 @@ namespace CrimsonClone.Classes
 {
     public class PlayerCharacter : CollisionObject
     {
+        // speed settings
         private readonly double maxSpeed = 15.0;
         private readonly double accelerate = 0.7;
         private double speed = 0;
+
+        // Variables that express pressed key
+        private bool UpPressed;
+        private bool DownPressed;
+        private bool LeftPressed;
+        private bool RightPressed;
+        private bool LMBPressed;
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
         public PlayerCharacter(double radius)
@@ -44,7 +52,8 @@ namespace CrimsonClone.Classes
 
         public override void Move()
         {
-            throw new NotImplementedException();
+            int dirX = 0;
+            int dirY = 0;
         }
 
 
