@@ -11,7 +11,6 @@ namespace CrimsonClone
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
-    using System.Numerics;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -26,15 +25,11 @@ namespace CrimsonClone
         // some functionality we would otherwise have to code ourselves.
         // Could add encapsulation to make sure Vector2 values cannot be out of bounds of the XAML canvas.
         // 23.3 Encapsulation added.
+        
+        // 29.3 Disregard previous. Vector2 and the numerics library abandoned for being annoying.
 
-        private Vector2 center;
-
-        // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
-        /*public CollisionObject(Vector2 center, double radius)
-        {
-            Center = center;
-            Radius = radius;
-        }*/
+        private float positionY;
+        private float positionX;
 
         // This just throws an exception if you try to give the speed property a negative value.
         public double Speed
@@ -60,18 +55,25 @@ namespace CrimsonClone
             }
         }
 
-        // Encapsulating the Vector2 attribute. Seems like "UnitX.ToPoint().X" is the numeric value of the X-coordinate in the Vector2 struct. This public attribute
-        // prevents the Vector2 coordinates of the center attribute from being less than 0 or more than 600 (Y) or 800 (X).
-        // This is what I'm currently assuming the size of the canvas is, but that can be changed.
-        public Vector2 Center
+        // Encapsulation for coordinate attributes. This ensures no object can leave the canvas.
+        // Their possible positions are vo
+        public float PositionY
         {
-            get { return center; }
+            get { return positionY; }
             set
             {
-                if (Vector2.UnitX.ToPoint().X >= 0 & Vector2.UnitX.ToPoint().X <= 800 & Vector2.UnitY.ToPoint().Y >= 0 & Vector2.UnitY.ToPoint().Y <= 600)
-                {
-                    center = value;
-                }
+                if (value >= 600 && value <= 0) positionY = value;
+                else throw new System.ArgumentException("Object outside canvas.");
+            }
+        }
+
+        public float PositionX
+        {
+            get { return positionX; }
+            set
+            {
+                if (value >= 800 && value <= 0) positionX = value;
+                else throw new System.ArgumentException("Object outside canvas.");
             }
         }
 
@@ -82,9 +84,12 @@ namespace CrimsonClone
         // http://rbwhitaker.wikidot.com/circle-collision-detection
         // Object1.Collision(Object2)
         // Revised collision math.
+        // Revised again for x and y coordinates based code.
+        // Math.Pow is a method that raises a given value to a power.
         public bool Collision(CollisionObject collisionObject)
         {
-            return (Math.Abs((collisionObject.Center - Center).Length()) < (collisionObject.radius + radius));
+            return (Math.Pow((positionX - collisionObject.positionX), 2) + Math.Pow((positionY - collisionObject.positionY), 2) <= Math.Pow((radius + collisionObject.radius), 2));
+
         }
 
         // Placeholder.
