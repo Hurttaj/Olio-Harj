@@ -41,6 +41,10 @@ namespace CrimsonClone.Classes
                 PositionY += (float)Math.Sin(Math.PI/4) * dirY * (float)speed;
             } 
         }
-        
+
+        public override void Move()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

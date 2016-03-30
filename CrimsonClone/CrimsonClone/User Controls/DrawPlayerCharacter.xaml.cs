@@ -31,7 +31,7 @@ namespace CrimsonClone
             Width = 16;
             Height = 16;
             
-            player = new PlayerCharacter(myVector, Width / 2);
+            player = new PlayerCharacter(Width / 2);
         }
 
         public void UpdatePosition()
