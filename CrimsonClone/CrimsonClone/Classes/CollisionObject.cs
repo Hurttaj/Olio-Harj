@@ -55,9 +55,8 @@ namespace CrimsonClone
             }
         }
 
-        // Encapsulating the Vector2 attribute. Seems like "UnitX.ToPoint().X" is the numeric value of the X-coordinate in the Vector2 struct. This public attribute
-        // prevents the Vector2 coordinates of the center attribute from being less than 0 or more than 600 (Y) or 800 (X).
-        // This is what I'm currently assuming the size of the canvas is, but that can be changed.
+        // Encapsulation for coordinate attributes. This ensures no object can leave the canvas.
+        // Their possible positions are bounded within the canvas.
         public float PositionY
         {
             get { return positionY; }
@@ -85,9 +84,10 @@ namespace CrimsonClone
         // http://rbwhitaker.wikidot.com/circle-collision-detection
         // Object1.Collision(Object2)
         // Revised collision math.
+        // Revised again for x and y coordinates based code.
         public bool Collision(CollisionObject collisionObject)
         {
-            return (Math.Abs((collisionObject.Center - Center).Length()) < (collisionObject.radius + radius));
+            return ((positionX - collisionObject.positionX) ^ 2 + (positionY - collisionObject.positionY) ^ 2 <= (radius + collisionObject.radius) ^ 2);
         }
 
         // Placeholder.
