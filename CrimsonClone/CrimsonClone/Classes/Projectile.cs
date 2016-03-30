@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CrimsonClone.Classes
 {
-    class Projectile
+    class Projectile : CollisionObject
     {
         public readonly float Speed = 30;
 
         public Projectile(double radius, float positionX, float positionY)
         {
             Radius = radius;
-            PositionX = positionX
-            PositionY = positionY
+            PositionX = positionX;
+            PositionY = positionY;
         }
     }
 }
