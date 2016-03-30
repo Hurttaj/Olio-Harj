@@ -8,5 +8,7 @@ namespace CrimsonClone.Classes
 {
     class Projectile
     {
+        public readonly float Speed = 30;
+
     }
 }
