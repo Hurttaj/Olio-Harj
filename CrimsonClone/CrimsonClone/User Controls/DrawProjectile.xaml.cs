@@ -21,7 +21,7 @@ namespace CrimsonClone.User_Controls
     {
         public Projectile bullet;
 
-        public DrawProjectile()
+        public void DrawProjectile()
         {
             this.InitializeComponent();
 
