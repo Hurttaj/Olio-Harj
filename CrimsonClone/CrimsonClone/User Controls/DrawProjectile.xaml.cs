@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,6 +22,12 @@ namespace CrimsonClone.User_Controls
     public sealed partial class DrawProjectile : UserControl
     {
         public Projectile bullet;
+
+        private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            PointerPoint pointerPoint = e.GetCurrentPoint(this);
+            Projectile.Move((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+        }
 
         public DrawProjectile(float PositionX, float PositionY)
         {

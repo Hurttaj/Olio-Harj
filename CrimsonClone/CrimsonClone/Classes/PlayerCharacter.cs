@@ -53,7 +53,7 @@ namespace CrimsonClone.Classes
             } 
         }*/
 
-        public override void Move(float dirX, float dirY)
+        public void Move(float dirX, float dirY)
         {
             /*
             dirX = 0;
