@@ -28,6 +28,7 @@
             Background="Transparent"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            PointerMoved="MyCanvas_PointerMoved"
             />
     </Grid>
 </Page>
