@@ -68,7 +68,15 @@ namespace CrimsonClone
             player.UpdatePosition();
 
             // create enemy list
-            enemies = new List<DrawEnemyCharacter>(); 
+            enemies = new List<DrawEnemyCharacter>();
+
+            /*for (int i = 1; i <= 4; i++)
+                enemies.Add(new DrawEnemyCharacter());
+
+            foreach (DrawEnemyCharacter enemy in enemies)
+            {
+                GameCanvas.Children.Add(enemy);
+            }*/
 
             // Creat game loop timer 
             timer = new DispatcherTimer();
