@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrimsonClone.User_Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -81,10 +82,9 @@ namespace CrimsonClone.Classes
             }
         }
 
-
         public void FireWeapon()
         {
-
+            new DrawProjectile();
         }
     }
 }
