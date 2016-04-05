@@ -154,6 +154,9 @@ namespace CrimsonClone
             new DrawProjectile(player.playerCharacter.PositionX, player.playerCharacter.PositionY, CursorX, CursorY);
         }*/
 
+        // Saves the positions of the cursor in the PlayerCharacter class. This is so we can use them as parameters
+        // for the DrawProjectile method from the PlayerCharacter class.
+        // Spaghetti.
         private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             PointerPoint pointerPoint = e.GetCurrentPoint(this);
