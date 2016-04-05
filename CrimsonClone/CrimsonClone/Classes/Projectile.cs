@@ -17,7 +17,7 @@ namespace CrimsonClone.Classes
             PositionY = positionY;
         }
 
-        public override void Move()
+        public override void Move(float dirX, float dirY)
         {
           
         }

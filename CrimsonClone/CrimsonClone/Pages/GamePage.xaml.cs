@@ -38,11 +38,13 @@ namespace CrimsonClone
 
         // Variables that express pressed key
         // NOW REDUNDANT
-        /*private bool UpPressed;
+        // USEFLUU AGAIN
+        private bool UpPressed;
         private bool DownPressed;
         private bool LeftPressed;
         private bool RightPressed;
-        private bool LMBPressed;*/
+        private bool LMBPressed;
+
 
         // canvas sizes
         private float CanvasWidth;
@@ -77,11 +79,19 @@ namespace CrimsonClone
 
         private void Timer_Tick(object sender, object e)
         {
-            player.playerCharacter.Move();
+            float dirX = 0;
+            float dirY = 0;
+
+            if (UpPressed) dirY -= 1;
+            if (DownPressed) dirY += 1;
+            if (LeftPressed) dirX -= 1;
+            if (RightPressed) dirX += 1;
+
+            player.playerCharacter.Move(dirX, dirY);
             player.UpdatePosition();
             foreach(DrawEnemyCharacter enemy in enemies)
             {
-                enemy.enemyCharacter.Move();
+                enemy.enemyCharacter.Move(player.playerCharacter.PositionX, player.playerCharacter.PositionY);
                 enemy.UpdatePosition();
             }
         }
@@ -91,19 +101,19 @@ namespace CrimsonClone
             switch (args.VirtualKey)
             {
                 case VirtualKey.W:
-                    player.playerCharacter.UpPressed = false;
+                    UpPressed = false;
                     break;
                 case VirtualKey.S:
-                    player.playerCharacter.DownPressed = false;
+                    DownPressed = false;
                     break;
                 case VirtualKey.D:
-                    player.playerCharacter.RightPressed = false;
+                    RightPressed = false;
                     break;
                 case VirtualKey.A:
-                    player.playerCharacter.LeftPressed = false;
+                    LeftPressed = false;
                     break;
                 case VirtualKey.LeftButton:
-                    player.playerCharacter.LMBPressed = false;
+                    LMBPressed = false;
                     break;
                 default:
                     break;
@@ -117,19 +127,19 @@ namespace CrimsonClone
             switch (args.VirtualKey)
             {
                 case VirtualKey.W:
-                    player.playerCharacter.UpPressed = true;
+                    UpPressed = true;
                     break;
                 case VirtualKey.S:
-                    player.playerCharacter.DownPressed = true;
+                    DownPressed = true;
                     break;
                 case VirtualKey.D:
-                    player.playerCharacter.RightPressed = true;
+                    RightPressed = true;
                     break;
                 case VirtualKey.A:
-                    player.playerCharacter.LeftPressed = true;
+                    LeftPressed = true;
                     break;
                 case VirtualKey.LeftButton:
-                    player.playerCharacter.LMBPressed = true;
+                    LMBPressed = true;
                     break;
                 default:
                     break;
