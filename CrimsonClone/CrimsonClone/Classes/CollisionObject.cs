@@ -62,8 +62,10 @@ namespace CrimsonClone
             get { return positionY; }
             set
             {
-                if (value <= 600 && value >= 0) positionY = value;
-                else value = 600;
+                if (value <= 600 - 2 * radius && value >= 0) positionY = value;
+                else if (value >= 600 - 2 * radius) positionY = 600 - 2 * (float)radius;
+                else if (value <= 0) positionY = 0;
+                /*else throw new System.ArgumentException("Object outside canvas.");*/
             }
         }
 
@@ -72,8 +74,10 @@ namespace CrimsonClone
             get { return positionX; }
             set
             {
-                if (value <= 800 && value >= 0) positionX = value;
-                else value = 800;
+                if (value <= 800 - 2 * radius && value >= 0) positionX = value;
+                else if (value >= 800 - 2 * radius) positionX = 800 - 2 * (float)radius;
+                else if (value <= 0) positionX = 0;
+                /*else throw new System.ArgumentException("Object outside canvas.");*/
             }
         }
 
