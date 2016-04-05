@@ -10,7 +10,7 @@ namespace CrimsonClone.Classes
     {
         public readonly float MaxSpeed = 30;
 
-        public Projectile(double radius, float positionX, float positionY)
+        public Projectile(double radius, float positionX, float positionY, float CursorX, float CursorY)
         {
             Radius = radius;
             PositionX = positionX;

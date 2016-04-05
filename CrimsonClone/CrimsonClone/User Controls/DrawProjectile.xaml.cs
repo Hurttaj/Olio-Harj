@@ -22,21 +22,15 @@ namespace CrimsonClone.User_Controls
     public sealed partial class DrawProjectile : UserControl
     {
         public Projectile bullet;
-
-        private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
-        {
-            PointerPoint pointerPoint = e.GetCurrentPoint(this);
-            Projectile.Move((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
-        }
-
-        public DrawProjectile(float PositionX, float PositionY)
+        
+        public DrawProjectile(float PositionX, float PositionY, float CursorX, float CursorY)
         {
             this.InitializeComponent();
 
             Width = 6;
             Height = 6;
 
-            bullet = new Projectile(Width / 2, PositionX, PositionY);
+            bullet = new Projectile(Width / 2, PositionX, PositionY, CursorX, CursorY);
         }
     }
 }

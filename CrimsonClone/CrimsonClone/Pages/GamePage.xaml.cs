@@ -147,11 +147,19 @@ namespace CrimsonClone
         }
 
 
-       /* private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
+     
+
+        /*public void FireWeapon()
+        {
+            new DrawProjectile(player.playerCharacter.PositionX, player.playerCharacter.PositionY, CursorX, CursorY);
+        }*/
+
+        private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             PointerPoint pointerPoint = e.GetCurrentPoint(this);
-            Projectile.Move((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
-        } */
+            player.playerCharacter.CursorX = (float)pointerPoint.Position.X;
+            player.playerCharacter.CursorY = (float)pointerPoint.Position.Y;
+        }
 
 
     }
