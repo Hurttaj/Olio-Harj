@@ -14,8 +14,8 @@ namespace CrimsonClone
     using System.Text;
     using System.Threading.Tasks;
 
-
-    public abstract class CollisionObject
+    // Abstract class abandoned for being annoying.
+    public /*abstract*/ class CollisionObject
     {
         // speed and radius properties. Marked private so I can exclude negative values.
         // Theoretically using unsigned doubles would also work, but it would probably crash the game if these properties got a negative value.
@@ -97,7 +97,9 @@ namespace CrimsonClone
         }
 
         // Placeholder.
-        public abstract void Move(float dirX, float dirY);
+        public void Move()
+        { }
+        
         // public abstract void Move();
 
     }

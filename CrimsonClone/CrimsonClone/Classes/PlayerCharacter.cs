@@ -14,6 +14,8 @@ namespace CrimsonClone.Classes
         private readonly double maxSpeed = 15.0;
         private readonly double accelerate = 0.7;
         private double speed = 0;
+        public float CursorX;
+        public float CursorY;
 
         /*
         // Variables that express pressed key
@@ -53,7 +55,7 @@ namespace CrimsonClone.Classes
             } 
         }*/
 
-        public override void Move(float dirX, float dirY)
+        public void Move(float dirX, float dirY)
         {
             /*
             dirX = 0;
@@ -88,7 +90,7 @@ namespace CrimsonClone.Classes
 
         public void FireWeapon()
         {
-            new DrawProjectile(PositionX, PositionY);
+            new DrawProjectile(PositionX, PositionY, CursorX, CursorY);
         }
     }
 }
