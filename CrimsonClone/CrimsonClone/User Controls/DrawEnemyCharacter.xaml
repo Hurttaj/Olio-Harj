@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <Grid>
-        <Ellipse x:Name="Enemy" Width="10" Height="10" Stroke="White" Fill="#FF242520"/>
+        <Ellipse x:Name="Enemy" Width="10" Height="10" Stroke="Green" Fill="Red"/>
 
     </Grid>
 </UserControl>
