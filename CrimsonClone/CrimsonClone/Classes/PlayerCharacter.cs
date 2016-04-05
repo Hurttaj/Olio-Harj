@@ -15,12 +15,14 @@ namespace CrimsonClone.Classes
         private readonly double accelerate = 0.7;
         private double speed = 0;
 
+        /*
         // Variables that express pressed key
         public bool UpPressed;
         public bool DownPressed;
         public bool LeftPressed;
         public bool RightPressed;
         public bool LMBPressed;
+        */
 
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
         public PlayerCharacter(double radius)
@@ -51,15 +53,17 @@ namespace CrimsonClone.Classes
             } 
         }*/
 
-        public override void Move()
+        public override void Move(float dirX, float dirY)
         {
-            int dirX = 0;
-            int dirY = 0;
+            /*
+            dirX = 0;
+            dirY = 0;
 
             if (UpPressed) dirY -= 1;
             if (DownPressed) dirY += 1;
             if (LeftPressed) dirX -= 1;
             if (RightPressed) dirX += 1;
+            */
 
             // speed settings; speed and acceleration are defined in class's private fields
             speed += accelerate;
