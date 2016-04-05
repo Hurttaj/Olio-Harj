@@ -25,7 +25,7 @@ namespace CrimsonClone.Classes
         }
 
         // this is a method for enemy movement
-        public override void Move()
+        public override void Move(float dirX, float dirY)
         {
             // speed settings
             speed += accelerate;

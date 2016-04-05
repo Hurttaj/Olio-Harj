@@ -1,4 +1,5 @@
 ﻿using System;
+using CrimsonClone.User_Controls;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,6 +27,9 @@ namespace CrimsonClone
     {
         // player character drawer
         private DrawPlayerCharacter player;
+
+        // list for enemy characters
+        private List<DrawEnemyCharacter> enemies;
 
         // Creat game loop timer
         private DispatcherTimer timer;
@@ -57,7 +61,10 @@ namespace CrimsonClone
             // create player
             player = new DrawPlayerCharacter(CanvasWidth / 2, CanvasHeight / 2);
             GameCanvas.Children.Add(player);
-            player.UpdatePosition(); 
+            player.UpdatePosition();
+
+            // create enemy list
+            enemies = new List<DrawEnemyCharacter>(); 
 
             // Creat game loop timer 
             timer = new DispatcherTimer();
@@ -70,6 +77,11 @@ namespace CrimsonClone
         {
             player.playerCharacter.Move();
             player.UpdatePosition();
+            foreach(DrawEnemyCharacter enemy in enemies)
+            {
+                enemy.enemyCharacter.Move();
+                enemy.UpdatePosition();
+            }
         }
 
         private void CoreWindow_KeyUp(CoreWindow sender, KeyEventArgs args)
