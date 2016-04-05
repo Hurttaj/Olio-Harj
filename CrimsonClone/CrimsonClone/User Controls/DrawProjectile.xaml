@@ -10,6 +10,6 @@
     d:DesignWidth="400">
 
     <Grid>
-        <Ellipse x:Name="Player" Width="6" Height="6" Stroke="Black" Fill="#FFE8F11E"/>
+        <Ellipse x:Name="Player" Width="6" Height="6" Fill="Yellow"/>
     </Grid>
 </UserControl>
