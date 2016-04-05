@@ -22,14 +22,14 @@ namespace CrimsonClone.User_Controls
     {
         public Projectile bullet;
 
-        public DrawProjectile()
+        public DrawProjectile(float PositionX, float PositionY)
         {
             this.InitializeComponent();
 
             Width = 6;
             Height = 6;
 
-            //bullet = new Projectile(Width / 2, player.PositionX, player.PositionY);
+            bullet = new Projectile(Width / 2, PositionX, PositionY);
         }
     }
 }
