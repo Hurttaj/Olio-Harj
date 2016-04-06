@@ -10,12 +10,16 @@ namespace CrimsonClone.Classes
     {
         // speed settings
         public readonly float speed = 30;
+        private float dirX;
+        private float dirY;
 
-        public Projectile(double radius, float positionX, float positionY, float CursorX, float CursorY)
+        public Projectile(double radius, float positionX, float positionY, float cursorX, float cursorY)
         {
             Radius = radius;
             PositionX = positionX;
             PositionY = positionY;
+            dirX = cursorX;
+            dirY = cursorY;
         }
 
         public void Move(float dirX, float dirY)
