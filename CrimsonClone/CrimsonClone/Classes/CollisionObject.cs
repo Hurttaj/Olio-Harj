@@ -90,6 +90,8 @@ namespace CrimsonClone
         // Revised collision math.
         // Revised again for x and y coordinates based code.
         // Math.Pow is a method that raises a given value to a power.
+        // Moved to game page
+        // Moved again to enemy page
         public bool Collision(CollisionObject collisionObject)
         {
             return (Math.Pow((positionX - collisionObject.positionX), 2) + Math.Pow((positionY - collisionObject.positionY), 2) <= Math.Pow((radius + collisionObject.radius), 2));
