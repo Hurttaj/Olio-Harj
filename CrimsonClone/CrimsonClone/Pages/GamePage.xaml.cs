@@ -121,6 +121,8 @@ namespace CrimsonClone
                 projectile.bullet.Move();
                 projectile.UpdatePosition();
             }
+
+            if (LMBPressed) player.playerCharacter.FireWeapon();
         }
 
         private void CoreWindow_KeyUp(CoreWindow sender, KeyEventArgs args)
