@@ -33,6 +33,9 @@ namespace CrimsonClone
         // list for enemy characters
         private List<DrawEnemyCharacter> enemies;
 
+        // list for projectiles
+        private List<DrawProjectile> projectiles;
+
         // Creat game loop timer
         private DispatcherTimer timer;
 
@@ -77,6 +80,9 @@ namespace CrimsonClone
             {
                 GameCanvas.Children.Add(enemy);
             }*/
+
+            // create projectile list
+            projectiles = new List<DrawProjectile>();
 
             // Creat game loop timer 
             timer = new DispatcherTimer();
