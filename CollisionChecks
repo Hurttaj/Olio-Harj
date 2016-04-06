@@ -1,0 +1,6 @@
+Call Collision check 
+if true
+if Enemy, enemy: Nothing happens
+if Enemy, projectile: Destroy enemy, increase projectile size, new collision check.
+if Enemy, player: Game over
+if else: what the fuck
