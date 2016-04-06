@@ -91,22 +91,35 @@ namespace CrimsonClone
             timer.Start();
         }
 
+        // game loop
         private void Timer_Tick(object sender, object e)
         {
+            // player movement
             float dirX = 0;
             float dirY = 0;
 
+            // these dictate the direction in wich the player moves
             if (UpPressed) dirY -= 1;
             if (DownPressed) dirY += 1;
             if (LeftPressed) dirX -= 1;
             if (RightPressed) dirX += 1;
 
+            // player movement method is called
             player.playerCharacter.Move(dirX, dirY);
             player.UpdatePosition();
+
+            // moving enemies
             foreach(DrawEnemyCharacter enemy in enemies)
             {
                 enemy.enemyCharacter.Move(player.playerCharacter.PositionX, player.playerCharacter.PositionY);
                 enemy.UpdatePosition();
+            }
+
+            // moving projectiles
+            foreach(DrawProjectile projectile in projectiles)
+            {
+                projectile.bullet.Move();
+                projectile.UpdatePosition();
             }
         }
 
