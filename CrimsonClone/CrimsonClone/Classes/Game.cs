@@ -1,6 +1,7 @@
 ﻿using CrimsonClone.User_Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +117,19 @@ namespace CrimsonClone.Classes
                 projectile.UpdatePosition();
             }
 
-            if (LMBPressed) player.playerCharacter.FireWeapon();
+            if (LMBPressed)
+            {
+                try
+                {
+                    DrawProjectile tempProjectile = player.playerCharacter.FireWeapon();
+                    projectiles.Add(tempProjectile);
+                    canvas.Children.Add(tempProjectile);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
         }
 
         public void EnemyCollision()
@@ -147,6 +160,7 @@ namespace CrimsonClone.Classes
             {
                 case VirtualKey.W:
                     UpPressed = true;
+                    Debug.WriteLine("W = true");
                     break;
                 case VirtualKey.S:
                     DownPressed = true;
@@ -157,8 +171,10 @@ namespace CrimsonClone.Classes
                 case VirtualKey.A:
                     LeftPressed = true;
                     break;
+                // for some reason left button does not work
                 case VirtualKey.LeftButton:
                     LMBPressed = true;
+                    Debug.WriteLine("LBMPressed = true");
                     break;
                 default:
                     break;
@@ -171,6 +187,7 @@ namespace CrimsonClone.Classes
             {
                 case VirtualKey.W:
                     UpPressed = false;
+                    Debug.WriteLine("W = false");
                     break;
                 case VirtualKey.S:
                     DownPressed = false;
@@ -181,8 +198,10 @@ namespace CrimsonClone.Classes
                 case VirtualKey.A:
                     LeftPressed = false;
                     break;
+                // for some reason left button does not work
                 case VirtualKey.LeftButton:
                     LMBPressed = false;
+                    Debug.WriteLine("LBMPressed = false");
                     break;
                 default:
                     break;
