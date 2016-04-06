@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace CrimsonClone.Classes
 {
-    class Game
+    class Game : CollisionObject
     {
         // player character drawer
         public DrawPlayerCharacter player;
@@ -106,6 +106,7 @@ namespace CrimsonClone.Classes
             {
                 enemy.enemyCharacter.Move(player.playerCharacter.PositionX, player.playerCharacter.PositionY);
                 enemy.UpdatePosition();
+                // EnemyCollision(player);
             }
 
             // moving projectiles
@@ -117,6 +118,26 @@ namespace CrimsonClone.Classes
 
             if (LMBPressed) player.playerCharacter.FireWeapon();
         }
+
+        public void EnemyCollision()
+        {
+            foreach (DrawEnemyCharacter enemy in enemies)
+            {
+                if (enemy.enemyCharacter.Collision(player.playerCharacter))
+                {
+                    // Game over
+                }
+
+                foreach (DrawProjectile projectile in projectiles)
+                {
+                    if(enemy.enemyCharacter.Collision(projectile.bullet))
+                    {
+
+                    }
+                }
+            }
+        }
+
 
         // W,S,A,D keys difinitions
         // And checking if they are pressed
