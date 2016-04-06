@@ -88,9 +88,9 @@ namespace CrimsonClone.Classes
             }
         }
 
-        public void FireWeapon()
+        public DrawProjectile FireWeapon()
         {
-            new DrawProjectile(PositionX, PositionY, CursorX, CursorY);
+            return new DrawProjectile(PositionX, PositionY, CursorX, CursorY);
         }
     }
 }
