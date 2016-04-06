@@ -27,17 +27,8 @@ namespace CrimsonClone
     /// </summary>
     public sealed partial class GamePage : Page
     {
-        // player character drawer
-        private DrawPlayerCharacter player;
 
-        // list for enemy characters
-        private List<DrawEnemyCharacter> enemies;
-
-        // list for projectiles
-        private List<DrawProjectile> projectiles;
-
-        // Creat game loop timer
-        private DispatcherTimer timer;
+        private Game game;
 
         // Variables that express pressed key
         // NOW REDUNDANT
@@ -55,9 +46,10 @@ namespace CrimsonClone
 
         public GamePage()
         {
+
             this.InitializeComponent();
 
-            // Keyboard listeners
+            /*// Keyboard listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
 
@@ -73,13 +65,13 @@ namespace CrimsonClone
             // create enemy list
             enemies = new List<DrawEnemyCharacter>();
 
-            /*for (int i = 1; i <= 4; i++)
+            for (int i = 1; i <= 4; i++)
                 enemies.Add(new DrawEnemyCharacter());
 
             foreach (DrawEnemyCharacter enemy in enemies)
             {
                 GameCanvas.Children.Add(enemy);
-            }*/
+            }
 
             // create projectile list
             projectiles = new List<DrawProjectile>();
@@ -88,11 +80,14 @@ namespace CrimsonClone
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1000 / 60);
-            timer.Start();
+            timer.Start();*/
+
+            game = new Game(GameCanvas);
+            game.StartGame();
         }
 
         // game loop
-        private void Timer_Tick(object sender, object e)
+        /*private void Timer_Tick(object sender, object e)
         {
             // player movement
             float dirX = 0;
@@ -189,8 +184,8 @@ namespace CrimsonClone
         private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             PointerPoint pointerPoint = e.GetCurrentPoint(this);
-            player.playerCharacter.CursorX = (float)pointerPoint.Position.X;
-            player.playerCharacter.CursorY = (float)pointerPoint.Position.Y;
+            game.player.playerCharacter.CursorX = (float)pointerPoint.Position.X;
+            game.player.playerCharacter.CursorY = (float)pointerPoint.Position.Y;
         }
 
 

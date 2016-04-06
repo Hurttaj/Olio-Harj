@@ -14,7 +14,7 @@ namespace CrimsonClone.Classes
     class Game
     {
         // player character drawer
-        private DrawPlayerCharacter player;
+        public DrawPlayerCharacter player;
 
         // list for enemy characters
         public List<DrawEnemyCharacter> enemies;

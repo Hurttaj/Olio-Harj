@@ -101,6 +101,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\PlayerCharacter.cs" />
     <Compile Include="Classes\Projectile.cs" />
     <Compile Include="Pages\CreditsPage.xaml.cs">
