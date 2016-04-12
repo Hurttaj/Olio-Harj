@@ -28,7 +28,13 @@
             Background="Transparent"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            
             PointerMoved="MyCanvas_PointerMoved"
+            PointerPressed="GameCanvas_PointerPressed"
+            PointerReleased="GameCanvas_PointerReleased"
             />
+        <!--
+        Pointer stuff manipulates mouse stuff (moved, LMBpressed)
+        -->
     </Grid>
 </Page>

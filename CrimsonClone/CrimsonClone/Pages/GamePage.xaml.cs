@@ -46,7 +46,7 @@ namespace CrimsonClone
             game.StartGame();
         }
 
-        
+        // mouce movement
         private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             PointerPoint pointerPoint = e.GetCurrentPoint(this);
@@ -55,5 +55,15 @@ namespace CrimsonClone
         }
 
 
+        // mouse click
+        private void GameCanvas_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            game.LMBPressed = true;
+        }
+
+        private void GameCanvas_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            game.LMBPressed = false;
+        }
     }
 }

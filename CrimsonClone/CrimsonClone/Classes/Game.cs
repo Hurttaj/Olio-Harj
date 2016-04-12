@@ -33,7 +33,9 @@ namespace CrimsonClone.Classes
         private bool DownPressed;
         private bool LeftPressed;
         private bool RightPressed;
-        private bool LMBPressed;
+
+        // is LMB pressed, comes from GamePage
+        public bool LMBPressed;
 
         // canvas
         private Canvas canvas;
@@ -171,11 +173,6 @@ namespace CrimsonClone.Classes
                 case VirtualKey.A:
                     LeftPressed = true;
                     break;
-                // for some reason left button does not work
-                case VirtualKey.Space:
-                    LMBPressed = true;
-                    Debug.WriteLine("LBMPressed = true");
-                    break;
                 default:
                     break;
             }
@@ -197,11 +194,6 @@ namespace CrimsonClone.Classes
                     break;
                 case VirtualKey.A:
                     LeftPressed = false;
-                    break;
-                // for some reason left button does not work
-                case VirtualKey.Space:
-                    LMBPressed = false;
-                    Debug.WriteLine("LBMPressed = false");
                     break;
                 default:
                     break;
