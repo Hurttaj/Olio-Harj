@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace CrimsonClone.Classes
 {
-    class Game : CollisionObject
+    class Game
     {
         // player character drawer
         public DrawPlayerCharacter player;
