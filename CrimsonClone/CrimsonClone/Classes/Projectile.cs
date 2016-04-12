@@ -16,8 +16,8 @@ namespace CrimsonClone.Classes
         public Projectile(double radius, float positionX, float positionY, float cursorX, float cursorY)
         {
             Radius = radius;
-            PositionX = positionX;
-            PositionY = positionY;
+            PositionX = positionX - (float)radius;
+            PositionY = positionY - (float)radius;
             dirX = cursorX;
             dirY = cursorY;
         }

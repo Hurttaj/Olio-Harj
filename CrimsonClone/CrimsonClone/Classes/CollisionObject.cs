@@ -94,7 +94,7 @@ namespace CrimsonClone
         // Moved again to enemy page
         public bool Collision(CollisionObject collisionObject)
         {
-            return (Math.Pow((positionX - collisionObject.positionX), 2) + Math.Pow((positionY - collisionObject.positionY), 2) <= Math.Pow((radius + collisionObject.radius), 2));
+            return (Math.Pow(((positionX + radius) - (collisionObject.positionX + collisionObject.radius)), 2) + Math.Pow(((positionY + radius) - (collisionObject.positionY + collisionObject.radius)), 2) <= Math.Pow((radius + collisionObject.radius), 2));
 
         }
 
