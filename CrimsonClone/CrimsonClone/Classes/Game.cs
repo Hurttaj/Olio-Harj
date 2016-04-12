@@ -116,6 +116,16 @@ namespace CrimsonClone.Classes
             foreach (DrawProjectile projectile in projectiles)
             {
                 projectile.bullet.Move();
+                
+                if (projectile.bullet.PositionX <= 0 ||
+                    projectile.bullet.PositionX >= (600 - projectile.bullet.Radius * 2) ||
+                    projectile.bullet.PositionY <= 0 ||
+                    projectile.bullet.PositionY >= (800 - projectile.bullet.Radius * 2))
+                {
+                    projectiles.Remove(projectile);
+                    canvas.Children.Remove(projectile);
+                }
+
                 projectile.UpdatePosition();
             }
 
