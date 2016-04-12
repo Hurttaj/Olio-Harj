@@ -99,8 +99,10 @@ namespace CrimsonClone
         }
 
         // Placeholder.
+        /*
         public void Move()
         { }
+        */
         
         // public abstract void Move();
 

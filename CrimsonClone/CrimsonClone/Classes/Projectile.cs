@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,12 @@ namespace CrimsonClone.Classes
         private float dirX;
         private float dirY;
 
+        // temporary variables for initial X and Y changes and for cursor location
+        double deltaX = 0;
+        double deltaY = 0;
+
+        double angle;
+
         public Projectile(double radius, float positionX, float positionY, float cursorX, float cursorY)
         {
             Radius = radius;
@@ -20,37 +27,39 @@ namespace CrimsonClone.Classes
             PositionY = positionY - (float)radius;
             dirX = cursorX;
             dirY = cursorY;
-        }
-
-        public void Move(float dirX, float dirY)
-        {
-            // temporary variables for initial X and Y changes and for cursor location
-            double deltaX = 0;
-            double deltaY = 0;
 
             // calculating the difference between player and enemy coordinates
-            deltaX = dirX - PositionX;
-            deltaY = dirY - PositionY;
+            deltaX = dirX - PositionX + Radius;
+            deltaY = dirY - PositionY + Radius;
 
             // calculating the angle between the player and the cursor in radians
-            double Angle = Math.Atan(deltaY / deltaX);
+            angle = Math.Atan(deltaY / deltaX);
+
+            if (deltaX < 0) angle += Math.PI;
+        }
+
+        public void Move(/*float dirX, float dirY*/)
+        {
+            // debug sentences
+            Debug.WriteLine("Direction: " + dirX + "," + dirY);
+            Debug.WriteLine("Position: " + PositionX + "," + PositionY);
 
             // actual X and Y coordinate calculations
             // sign returns 1 if given number is positive, and -1 if it's negative
             if (deltaX == 0 && deltaY != 0)
             {
-                PositionY += (float)speed * Math.Sign(deltaY);
+                PositionY += speed * Math.Sign(deltaY);
             }
 
             else if (deltaX != 0 && deltaY == 0)
             {
-                PositionX += (float)speed * Math.Sign(deltaX);
+                PositionX += speed * Math.Sign(deltaX);
             }
 
             else if (deltaX != 0 && deltaY != 0)
             {
-                PositionX += (float)(Math.Cos(Angle)) * (float)speed * Math.Sign(deltaX);
-                PositionY += (float)(Math.Sin(Angle)) * (float)speed * Math.Sign(deltaY);
+                PositionX += (float)(Math.Cos(angle)) * speed /* Math.Sign(deltaX)*/;
+                PositionY += (float)(Math.Sin(angle)) * speed /* Math.Sign(deltaY)*/;
             }
         }
 
