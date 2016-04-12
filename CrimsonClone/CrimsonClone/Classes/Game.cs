@@ -116,17 +116,21 @@ namespace CrimsonClone.Classes
             foreach (DrawProjectile projectile in projectiles)
             {
                 projectile.bullet.Move();
-                
+                Debug.WriteLine("Projectile moved logically");
+                projectile.UpdatePosition();
+                Debug.WriteLine("Projectile moved on canvas");
+
+                // POISTETTAVAT ALUKSI ERI LISTAAN!
                 if (projectile.bullet.PositionX <= 0 ||
                     projectile.bullet.PositionX >= (600 - projectile.bullet.Radius * 2) ||
                     projectile.bullet.PositionY <= 0 ||
                     projectile.bullet.PositionY >= (800 - projectile.bullet.Radius * 2))
                 {
-                    projectiles.Remove(projectile);
                     canvas.Children.Remove(projectile);
-                }
-
-                projectile.UpdatePosition();
+                    Debug.WriteLine("Projectile removed from canvas");
+                    projectiles.Remove(projectile);
+                    Debug.WriteLine("Projectile removed from list");
+                }   
             }
 
             if (LMBPressed)

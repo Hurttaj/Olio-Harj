@@ -41,8 +41,10 @@ namespace CrimsonClone.Classes
         public void Move(/*float dirX, float dirY*/)
         {
             // debug sentences
+            /*
             Debug.WriteLine("Direction: " + dirX + "," + dirY);
             Debug.WriteLine("Position: " + PositionX + "," + PositionY);
+            */
 
             // actual X and Y coordinate calculations
             // sign returns 1 if given number is positive, and -1 if it's negative
