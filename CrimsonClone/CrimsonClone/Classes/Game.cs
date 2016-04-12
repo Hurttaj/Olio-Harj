@@ -172,7 +172,7 @@ namespace CrimsonClone.Classes
                     LeftPressed = true;
                     break;
                 // for some reason left button does not work
-                case VirtualKey.LeftButton:
+                case VirtualKey.Space:
                     LMBPressed = true;
                     Debug.WriteLine("LBMPressed = true");
                     break;
@@ -199,7 +199,7 @@ namespace CrimsonClone.Classes
                     LeftPressed = false;
                     break;
                 // for some reason left button does not work
-                case VirtualKey.LeftButton:
+                case VirtualKey.Space:
                     LMBPressed = false;
                     Debug.WriteLine("LBMPressed = false");
                     break;
