@@ -202,7 +202,7 @@ namespace CrimsonClone.Classes
                     enemies.Remove(enemy);
                     canvas.Children.Remove(enemy);
                     Debug.WriteLine("Enemy removed");
-                    SpawnEnemies(1);
+                    SpawnEnemies(2);
                 }
                 catch(Exception ex)
                 {

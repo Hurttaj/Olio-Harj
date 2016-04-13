@@ -11,7 +11,7 @@ namespace CrimsonClone.Classes
         // maxSpeed is overall maximum speed
         private readonly double maxSpeed = 50.0;
         // currentMaxSpeed is the maximum speed for each enemy
-        private double currentMaxSpeed = 8.0;
+        private double currentMaxSpeed = 4.0;
         private readonly double accelerate = 0.5;
         private double speed = 0;
 
