@@ -179,7 +179,7 @@ namespace CrimsonClone.Classes
 
         public void EnemyCollision()
         {
-            Debug.WriteLine("Enemy collision check");
+            //Debug.WriteLine("Enemy collision check");
             removeEnemies = new List<DrawEnemyCharacter>();
             removeProjectiles = new List<DrawProjectile>();
 
@@ -201,7 +201,7 @@ namespace CrimsonClone.Classes
                     {
                         removeEnemies.Add(enemy);
                         removeProjectiles.Add(projectile);
-                        Debug.WriteLine("Enemy added to remove list");
+                        //Debug.WriteLine("Enemy added to remove list");
                         breaker = true;
                         break;
                     }
@@ -214,8 +214,12 @@ namespace CrimsonClone.Classes
                 {
                     enemies.Remove(enemy);
                     canvas.Children.Remove(enemy);
-                    Debug.WriteLine("Enemy removed");
+                    //Debug.WriteLine("Enemy removed");
+                    Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
+                    Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + (tickCount / 1800))));
                     SpawnEnemies(spawnRand.Next(1, (int)(2 + (tickCount / 1800))));
+                    // The tick counter works but for some reason the rand always returns 1.
+                
                 }
                 catch(Exception ex)
                 {
@@ -245,7 +249,7 @@ namespace CrimsonClone.Classes
                 DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight));
                 enemies.Add(tempEnemy);
                 canvas.Children.Add(tempEnemy);
-                Debug.WriteLine("Enemy added");
+                //Debug.WriteLine("Enemy added");
             }
             
         }
