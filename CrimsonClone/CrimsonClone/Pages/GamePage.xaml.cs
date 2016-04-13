@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Input;
 using CrimsonClone.Classes;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,17 +34,24 @@ namespace CrimsonClone
         // Variables that express pressed key
         // NOW REDUNDANT
         // USEFUL AGAIN
-        // REMOVED AGAIN    
+        // REMOVED AGAIN  
+
+
+        Binding MyBinding = new Binding();  
 
         public GamePage()
         {
 
             this.InitializeComponent();
 
-          
-
-            game = new Game(GameCanvas);
+            game = new Game(GameCanvas, this);
             game.StartGame();
+        }
+
+        public void GameOver()
+        {
+            Debug.WriteLine("Test line");
+            Frame.Navigate(typeof(MainPage));
         }
 
         // mouce movement

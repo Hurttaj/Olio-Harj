@@ -14,9 +14,6 @@ namespace CrimsonClone.Classes
 {
     class Game
     {
-        // game over bind
-        public bool IsGameOver { get; set; }
-
         // player character drawer
         public DrawPlayerCharacter player;
 
@@ -53,12 +50,15 @@ namespace CrimsonClone.Classes
         // canvas sizes
         private float CanvasWidth;
         private float CanvasHeight;
+
+        private GamePage gamePage;
         
-        public Game(Canvas canvas)
+        public Game(Canvas canvas, GamePage gamePage)
         {
             this.canvas = canvas;
+            this.gamePage = gamePage;
 
-            IsGameOver = false;
+            // IsGameOver = false;
 
             // Keyboard listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -185,8 +185,9 @@ namespace CrimsonClone.Classes
                 if (enemy.enemyCharacter.Collision(player.playerCharacter))
                 {
                     // Game over
-                    IsGameOver = true;
+                    // IsGameOver = true;
                     timer.Stop();
+                    gamePage.GameOver();
                 }
 
                 foreach (DrawProjectile projectile in projectiles)
