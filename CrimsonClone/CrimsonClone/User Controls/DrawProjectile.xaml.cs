@@ -32,6 +32,7 @@ namespace CrimsonClone.User_Controls
 
             bullet = new Projectile(Width / 2, PositionX, PositionY, CursorX, CursorY);
             UpdatePosition();
+            SetValue(Canvas.ZIndexProperty, -5);
         }
 
         public void UpdatePosition()
