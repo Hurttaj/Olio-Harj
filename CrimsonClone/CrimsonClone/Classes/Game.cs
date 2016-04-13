@@ -23,6 +23,7 @@ namespace CrimsonClone.Classes
         public List<DrawEnemyCharacter> removeEnemies;
 
         // rng for enemy spawn
+        private Random spawnRand = new Random();
         private Random enemyRand = new Random();
 
         // list for projectiles
@@ -43,6 +44,8 @@ namespace CrimsonClone.Classes
 
         // is LMB pressed, comes from GamePage
         public bool LMBPressed;
+
+        private int tickCount = 0;
 
         // canvas
         private Canvas canvas;
@@ -170,6 +173,8 @@ namespace CrimsonClone.Classes
                     Debug.WriteLine(ex.Message);
                 }
             }
+
+            tickCount++;
         }
 
         public void EnemyCollision()
@@ -210,7 +215,7 @@ namespace CrimsonClone.Classes
                     enemies.Remove(enemy);
                     canvas.Children.Remove(enemy);
                     Debug.WriteLine("Enemy removed");
-                    SpawnEnemies(2);
+                    SpawnEnemies(spawnRand.Next(1, (int)(2 + (tickCount / 1800))));
                 }
                 catch(Exception ex)
                 {
