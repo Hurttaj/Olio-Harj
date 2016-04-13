@@ -23,8 +23,7 @@ namespace CrimsonClone.Classes
         public List<DrawEnemyCharacter> removeEnemies;
 
         // rng for enemy spawn
-        private Random enemyX = new Random();
-        private Random enemyY = new Random();
+        private Random enemyRand = new Random();
 
         // list for projectiles
         public List<DrawProjectile> projectiles;
@@ -77,15 +76,6 @@ namespace CrimsonClone.Classes
 
             // creating four enemies
             SpawnEnemies(4);
-            /*
-            for (int i = 1; i <= 4; i++)
-            {
-                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyX.Next(1, (int)CanvasWidth), enemyY.Next(1, (int)CanvasHeight));
-                enemies.Add(tempEnemy);
-                canvas.Children.Add(tempEnemy);
-                Debug.WriteLine("Enemy added");
-            }
-            */
 
             // Creat game loop timer 
             timer = new DispatcherTimer();
@@ -212,7 +202,7 @@ namespace CrimsonClone.Classes
                     enemies.Remove(enemy);
                     canvas.Children.Remove(enemy);
                     Debug.WriteLine("Enemy removed");
-                    SpawnEnemies(2);
+                    SpawnEnemies(1);
                 }
                 catch(Exception ex)
                 {
@@ -239,7 +229,7 @@ namespace CrimsonClone.Classes
         {
             for (int i = 1; i <= count; i++)
             {
-                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyX.Next(1, (int)CanvasWidth), enemyY.Next(1, (int)CanvasHeight));
+                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight));
                 enemies.Add(tempEnemy);
                 canvas.Children.Add(tempEnemy);
                 Debug.WriteLine("Enemy added");
