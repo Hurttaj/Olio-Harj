@@ -14,6 +14,9 @@ namespace CrimsonClone.Classes
 {
     class Game
     {
+        // game over bind
+        public bool IsGameOver { get; set; }
+
         // player character drawer
         public DrawPlayerCharacter player;
 
@@ -54,6 +57,8 @@ namespace CrimsonClone.Classes
         public Game(Canvas canvas)
         {
             this.canvas = canvas;
+
+            IsGameOver = false;
 
             // Keyboard listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
@@ -180,6 +185,8 @@ namespace CrimsonClone.Classes
                 if (enemy.enemyCharacter.Collision(player.playerCharacter))
                 {
                     // Game over
+                    IsGameOver = true;
+                    timer.Stop();
                 }
 
                 foreach (DrawProjectile projectile in projectiles)
