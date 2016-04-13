@@ -76,6 +76,8 @@ namespace CrimsonClone.Classes
             projectiles = new List<DrawProjectile>();
 
             // creating four enemies
+            SpawnEnemies(4);
+            /*
             for (int i = 1; i <= 4; i++)
             {
                 DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyX.Next(1, (int)CanvasWidth), enemyY.Next(1, (int)CanvasHeight));
@@ -83,6 +85,7 @@ namespace CrimsonClone.Classes
                 canvas.Children.Add(tempEnemy);
                 Debug.WriteLine("Enemy added");
             }
+            */
 
             // Creat game loop timer 
             timer = new DispatcherTimer();
@@ -118,8 +121,8 @@ namespace CrimsonClone.Classes
             {
                 enemy.enemyCharacter.Move(player.playerCharacter.PositionX, player.playerCharacter.PositionY);
                 enemy.UpdatePosition();
-                // EnemyCollision(player);
             }
+            EnemyCollision();
 
             // initialize prjectile removal list
             removeProjectiles = new List<DrawProjectile>();
@@ -128,9 +131,9 @@ namespace CrimsonClone.Classes
             foreach (DrawProjectile projectile in projectiles)
             {
                 projectile.bullet.Move();
-                Debug.WriteLine("Projectile moved logically");
+                //Debug.WriteLine("Projectile moved logically");
                 projectile.UpdatePosition();
-                Debug.WriteLine("Projectile moved on canvas");
+                //Debug.WriteLine("Projectile moved on canvas");
 
                 // POISTETTAVAT ALUKSI ERI LISTAAN!
                 if (projectile.bullet.PositionX <= 0 ||
@@ -139,7 +142,7 @@ namespace CrimsonClone.Classes
                     projectile.bullet.PositionY >= (CanvasHeight - projectile.bullet.Radius * 2))
                 {
                     removeProjectiles.Add(projectile);
-                    Debug.WriteLine("Projectile added to removal list");
+                    //Debug.WriteLine("Projectile added to removal list");
                 }   
             }
 
@@ -149,9 +152,9 @@ namespace CrimsonClone.Classes
                 try
                 { 
                     canvas.Children.Remove(projectile);
-                    Debug.WriteLine("Projectile removed from canvas");
+                    //Debug.WriteLine("Projectile removed from canvas");
                     projectiles.Remove(projectile);
-                    Debug.WriteLine("Projectile removed from list");
+                    //Debug.WriteLine("Projectile removed from list");
                 }
                 catch (Exception ex)
                 {
@@ -176,8 +179,14 @@ namespace CrimsonClone.Classes
 
         public void EnemyCollision()
         {
+            Debug.WriteLine("Enemy collision check");
+            removeEnemies = new List<DrawEnemyCharacter>();
+            removeProjectiles = new List<DrawProjectile>();
+
             foreach (DrawEnemyCharacter enemy in enemies)
             {
+                bool breaker = false;
+
                 if (enemy.enemyCharacter.Collision(player.playerCharacter))
                 {
                     // Game over
@@ -187,12 +196,56 @@ namespace CrimsonClone.Classes
                 {
                     if(enemy.enemyCharacter.Collision(projectile.bullet))
                     {
-
+                        removeEnemies.Add(enemy);
+                        removeProjectiles.Add(projectile);
+                        Debug.WriteLine("Enemy added to remove list");
+                        breaker = true;
+                        break;
                     }
                 }
+                if (breaker == true) break;
+            }
+            foreach (DrawEnemyCharacter enemy in removeEnemies)
+            {
+                try
+                {
+                    enemies.Remove(enemy);
+                    canvas.Children.Remove(enemy);
+                    Debug.WriteLine("Enemy removed");
+                    SpawnEnemies(2);
+                }
+                catch(Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+
+            foreach (DrawProjectile projectile in removeProjectiles)
+            {
+                try
+                {
+                    projectiles.Remove(projectile);
+                    canvas.Children.Remove(projectile);
+                }
+                catch(Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                } 
             }
         }
 
+        // enemy spawn method
+        private void SpawnEnemies(int count)
+        {
+            for (int i = 1; i <= count; i++)
+            {
+                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyX.Next(1, (int)CanvasWidth), enemyY.Next(1, (int)CanvasHeight));
+                enemies.Add(tempEnemy);
+                canvas.Children.Add(tempEnemy);
+                Debug.WriteLine("Enemy added");
+            }
+            
+        }
 
         // W,A,S,D keys difinitions
         // And checking if they are pressed
@@ -202,7 +255,7 @@ namespace CrimsonClone.Classes
             {
                 case VirtualKey.W:
                     UpPressed = true;
-                    Debug.WriteLine("W = true");
+                    //Debug.WriteLine("W = true");
                     break;
                 case VirtualKey.S:
                     DownPressed = true;
@@ -224,7 +277,7 @@ namespace CrimsonClone.Classes
             {
                 case VirtualKey.W:
                     UpPressed = false;
-                    Debug.WriteLine("W = false");
+                    //Debug.WriteLine("W = false");
                     break;
                 case VirtualKey.S:
                     DownPressed = false;
