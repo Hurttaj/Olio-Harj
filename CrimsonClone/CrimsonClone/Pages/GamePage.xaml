@@ -10,17 +10,6 @@
     Height="600">
 
     <Grid Background="Transparent">
-        <RelativePanel VerticalAlignment="Top" HorizontalAlignment="Left">
-            <TextBlock x:Name="textScore" Text="Score: "
-                       Foreground="Black" Padding="0,0,5,0"/>
-            <TextBlock x:Name="scoreTextBlock" Text="000000" 
-                       Foreground="Black" RelativePanel.RightOf="textScore"/>
-            <TextBlock x:Name="textTime" Text="Time: " Foreground="Black" 
-                       Padding="0,0,5,0" RelativePanel.Below="scoreTextBlock"/>
-            <TextBlock x:Name="timeTextBlock" Text="00:00.00" 
-                       Foreground="Black" RelativePanel.RightOf="textTime" 
-                       RelativePanel.Below="scoreTextBlock"/>
-        </RelativePanel>
         <Canvas 
             x:Name="GameCanvas"
             Width="800"
@@ -36,5 +25,17 @@
         <!--
         Pointer stuff manipulates mouse stuff (moved, LMBpressed)
         -->
+        <RelativePanel VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock x:Name="textScore" Text="Score: "
+                       Foreground="Black" Padding="0,0,5,0"/>
+            <TextBlock x:Name="scoreTextBlock" Text="000000" 
+                       Foreground="Black" RelativePanel.RightOf="textScore"/>
+            <TextBlock x:Name="textTime" Text="Time: " Foreground="Black" 
+                       Padding="0,0,5,0" RelativePanel.Below="scoreTextBlock"/>
+            <TextBlock x:Name="timeTextBlock" Text="00:00.00" 
+                       Foreground="Black" RelativePanel.RightOf="textTime" 
+                       RelativePanel.Below="scoreTextBlock"/>
+        </RelativePanel>
+        
     </Grid>
 </Page>
