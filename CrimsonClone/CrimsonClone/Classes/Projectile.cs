@@ -10,7 +10,7 @@ namespace CrimsonClone.Classes
     public class Projectile : CollisionObject
     {
         // speed settings
-        public readonly float speed = 30;
+        public readonly float speed = 20;
         private float dirX;
         private float dirY;
 

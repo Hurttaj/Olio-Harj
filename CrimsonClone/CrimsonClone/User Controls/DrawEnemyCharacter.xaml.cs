@@ -26,14 +26,14 @@ namespace CrimsonClone.User_Controls
         {
             this.InitializeComponent();
 
-            Width = 12;
-            Height = 12;
+            Width = 18;
+            Height = 18;
 
             enemyCharacter = new Enemy(Width / 2);
             enemyCharacter.PositionX = positionX;
             enemyCharacter.PositionY = positionY;
             SetValue(Canvas.ZIndexProperty, -10);
-
+            UpdatePosition();
         }
 
         public void UpdatePosition()

@@ -27,8 +27,8 @@ namespace CrimsonClone
         {
             this.InitializeComponent();
 
-            Width = 16;
-            Height = 16;
+            Width = 20;
+            Height = 20;
             
             playerCharacter = new PlayerCharacter(Width / 2);
             playerCharacter.PositionX = positionX;

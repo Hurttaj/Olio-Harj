@@ -11,7 +11,7 @@ namespace CrimsonClone.Classes
     public class PlayerCharacter : CollisionObject
     {
         // speed settings
-        private readonly double maxSpeed = 15.0;
+        private readonly double maxSpeed = 10.0;
         private readonly double accelerate = 0.7;
         private double speed = 0;
         public float CursorX;

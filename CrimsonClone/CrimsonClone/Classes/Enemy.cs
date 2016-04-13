@@ -11,8 +11,8 @@ namespace CrimsonClone.Classes
         // maxSpeed is overall maximum speed
         private readonly double maxSpeed = 50.0;
         // currentMaxSpeed is the maximum speed for each enemy
-        private double currentMaxSpeed = 20.0;
-        private readonly double accelerate = 1.0;
+        private double currentMaxSpeed = 8.0;
+        private readonly double accelerate = 0.5;
         private double speed = 0;
 
         // constructor
@@ -40,7 +40,9 @@ namespace CrimsonClone.Classes
             deltaY = dirY - PositionY;
 
             // calculating the angle between the player and the enemy in radians
-            double Angle = Math.Atan(deltaY / deltaX);
+            double angle = Math.Atan(deltaY / deltaX);
+
+            if (deltaX < 0) angle += Math.PI;
 
             // actual X and Y coordinate calculations
             // sign returns 1 if given number is positive, and -1 if it's negative
@@ -56,8 +58,8 @@ namespace CrimsonClone.Classes
 
             else if (deltaX != 0 && deltaY != 0)
             {
-                PositionX += (float)(Math.Cos(Angle)) * (float)speed * Math.Sign(deltaX);
-                PositionY += (float)(Math.Sin(Angle)) * (float)speed * Math.Sign(deltaY);
+                PositionX += (float)(Math.Cos(angle)) * (float)speed /* Math.Sign(deltaX)*/;
+                PositionY += (float)(Math.Sin(angle)) * (float)speed /* Math.Sign(deltaY)*/;
             }
         }
 

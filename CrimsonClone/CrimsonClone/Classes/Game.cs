@@ -22,6 +22,10 @@ namespace CrimsonClone.Classes
         // list for to-be-removed enemies
         public List<DrawEnemyCharacter> removeEnemies;
 
+        // rng for enemy spawn
+        private Random enemyX = new Random();
+        private Random enemyY = new Random();
+
         // list for projectiles
         public List<DrawProjectile> projectiles;
         // list for to-be-removed projectiles
@@ -67,17 +71,18 @@ namespace CrimsonClone.Classes
 
             // create enemy list
             enemies = new List<DrawEnemyCharacter>();
-            /*
-            for (int i = 1; i <= 4; i++)
-                enemies.Add(new DrawEnemyCharacter());
-
-            foreach (DrawEnemyCharacter enemy in enemies)
-            {
-                canvas.Children.Add(enemy);
-            }
-            */
+       
             // create projectile list
             projectiles = new List<DrawProjectile>();
+
+            // creating four enemies
+            for (int i = 1; i <= 4; i++)
+            {
+                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyX.Next(1, (int)CanvasWidth), enemyY.Next(1, (int)CanvasHeight));
+                enemies.Add(tempEnemy);
+                canvas.Children.Add(tempEnemy);
+                Debug.WriteLine("Enemy added");
+            }
 
             // Creat game loop timer 
             timer = new DispatcherTimer();
@@ -129,18 +134,12 @@ namespace CrimsonClone.Classes
 
                 // POISTETTAVAT ALUKSI ERI LISTAAN!
                 if (projectile.bullet.PositionX <= 0 ||
-                    projectile.bullet.PositionX >= (800 - projectile.bullet.Radius * 2) ||
+                    projectile.bullet.PositionX >= (CanvasWidth - projectile.bullet.Radius * 2) ||
                     projectile.bullet.PositionY <= 0 ||
-                    projectile.bullet.PositionY >= (600 - projectile.bullet.Radius * 2))
+                    projectile.bullet.PositionY >= (CanvasHeight - projectile.bullet.Radius * 2))
                 {
                     removeProjectiles.Add(projectile);
                     Debug.WriteLine("Projectile added to removal list");
-                    /*
-                    canvas.Children.Remove(projectile);
-                    Debug.WriteLine("Projectile removed from canvas");
-                    projectiles.Remove(projectile);
-                    Debug.WriteLine("Projectile removed from list");
-                    */
                 }   
             }
 
@@ -195,7 +194,7 @@ namespace CrimsonClone.Classes
         }
 
 
-        // W,S,A,D keys difinitions
+        // W,A,S,D keys difinitions
         // And checking if they are pressed
         private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs args)
         {
