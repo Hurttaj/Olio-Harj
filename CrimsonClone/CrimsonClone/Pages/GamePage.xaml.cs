@@ -55,10 +55,17 @@ namespace CrimsonClone
         }
 
 
-        // mouse click
+        // mouse click. 13.4 Fixed to only work on left click
         private void GameCanvas_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            game.LMBPressed = true;
+            Windows.UI.Xaml.Input.Pointer ptr = e.Pointer;
+            Windows.UI.Input.PointerPoint ptrPt = e.GetCurrentPoint(GameCanvas);
+
+            if (ptrPt.Properties.IsLeftButtonPressed)
+            {
+                game.LMBPressed = true;
+            }
+            
         }
 
         private void GameCanvas_PointerReleased(object sender, PointerRoutedEventArgs e)
