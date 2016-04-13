@@ -31,6 +31,7 @@ namespace CrimsonClone.User_Controls
             Height = 6;
 
             bullet = new Projectile(Width / 2, PositionX, PositionY, CursorX, CursorY);
+            UpdatePosition();
         }
 
         public void UpdatePosition()

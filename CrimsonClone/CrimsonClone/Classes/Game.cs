@@ -19,9 +19,13 @@ namespace CrimsonClone.Classes
 
         // list for enemy characters
         public List<DrawEnemyCharacter> enemies;
+        // list for to-be-removed enemies
+        public List<DrawEnemyCharacter> removeEnemies;
 
         // list for projectiles
         public List<DrawProjectile> projectiles;
+        // list for to-be-removed projectiles
+        public List<DrawProjectile> removeProjectiles;
 
         // Creat game loop timer
         private DispatcherTimer timer;
@@ -112,6 +116,9 @@ namespace CrimsonClone.Classes
                 // EnemyCollision(player);
             }
 
+            // initialize prjectile removal list
+            removeProjectiles = new List<DrawProjectile>();
+
             // moving projectiles
             foreach (DrawProjectile projectile in projectiles)
             {
@@ -122,15 +129,35 @@ namespace CrimsonClone.Classes
 
                 // POISTETTAVAT ALUKSI ERI LISTAAN!
                 if (projectile.bullet.PositionX <= 0 ||
-                    projectile.bullet.PositionX >= (600 - projectile.bullet.Radius * 2) ||
+                    projectile.bullet.PositionX >= (800 - projectile.bullet.Radius * 2) ||
                     projectile.bullet.PositionY <= 0 ||
-                    projectile.bullet.PositionY >= (800 - projectile.bullet.Radius * 2))
+                    projectile.bullet.PositionY >= (600 - projectile.bullet.Radius * 2))
                 {
+                    removeProjectiles.Add(projectile);
+                    Debug.WriteLine("Projectile added to removal list");
+                    /*
                     canvas.Children.Remove(projectile);
                     Debug.WriteLine("Projectile removed from canvas");
                     projectiles.Remove(projectile);
                     Debug.WriteLine("Projectile removed from list");
+                    */
                 }   
+            }
+
+            // removing projectiles
+            foreach (DrawProjectile projectile in removeProjectiles)
+            {
+                try
+                { 
+                    canvas.Children.Remove(projectile);
+                    Debug.WriteLine("Projectile removed from canvas");
+                    projectiles.Remove(projectile);
+                    Debug.WriteLine("Projectile removed from list");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
             }
 
             if (LMBPressed)
