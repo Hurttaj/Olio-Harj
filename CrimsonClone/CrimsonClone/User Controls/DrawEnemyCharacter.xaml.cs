@@ -32,6 +32,7 @@ namespace CrimsonClone.User_Controls
             enemyCharacter = new Enemy(Width / 2);
             enemyCharacter.PositionX = positionX;
             enemyCharacter.PositionY = positionY;
+            SetValue(Canvas.ZIndexProperty, -10);
 
         }
 
