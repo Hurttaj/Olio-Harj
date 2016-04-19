@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,11 @@ namespace CrimsonClone.Classes
         private double speed = 0;
 
         // constructor
-        public Enemy(double radius /*, int time*/)
+        public Enemy(double radius, int tickCount)
         {
             Radius = radius;
-            /*currentMaxSpeed += time/1000 */
+            currentMaxSpeed += tickCount / 1800.0;
+            Debug.WriteLine("MaxSpeed" + currentMaxSpeed);
             // safetyguard for enemy speed
             if (currentMaxSpeed > maxSpeed) currentMaxSpeed = maxSpeed;
         }
