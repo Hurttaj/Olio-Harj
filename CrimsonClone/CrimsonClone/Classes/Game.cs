@@ -37,7 +37,7 @@ namespace CrimsonClone.Classes
 
         private DispatcherTimer fireRate;
 
-        public bool FireTimer = false;
+        public bool FireTimer = true;
 
         // Variables that express pressed key
         // NOW REDUNDANT
