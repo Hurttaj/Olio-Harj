@@ -49,6 +49,9 @@ namespace CrimsonClone.Classes
         // Moved the 900 to the rand itself.
         private int tickCount = 0;
 
+        // score counter
+        private int score = 0;
+
         // canvas
         private Canvas canvas;
 
@@ -216,9 +219,10 @@ namespace CrimsonClone.Classes
                 {
                     enemies.Remove(enemy);
                     canvas.Children.Remove(enemy);
+                    score += 10;
                     //Debug.WriteLine("Enemy removed");
-                    Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
-                    Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
+                    //Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
+                    //Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
                     SpawnEnemies(spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
                     // The tick counter works but for some reason the rand always returns 1.
                 
