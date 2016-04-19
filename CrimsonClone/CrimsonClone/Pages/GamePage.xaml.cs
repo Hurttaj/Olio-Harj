@@ -30,7 +30,11 @@ namespace CrimsonClone
     {
 
         private Game game;
-        public int Score { get; set; }
+        public int Score { get
+            {
+                return game.score;
+            }
+        }
         public int Time { get
             {
                 return game.tickCount;
