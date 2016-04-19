@@ -30,7 +30,12 @@ namespace CrimsonClone
     {
 
         private Game game;
-        public int score { get; set; }
+        public int Score { get; set; }
+        public int Time { get
+            {
+                return game.tickCount;
+            }
+        }
         // Variables that express pressed key
         // NOW REDUNDANT
         // USEFUL AGAIN
@@ -50,8 +55,9 @@ namespace CrimsonClone
 
         public void GameOver()
         {
-            Debug.WriteLine("Test line");
-            Frame.Navigate(typeof(MainPage));
+            //Debug.WriteLine("Test line");
+            //(GamePage.Current as GamePage).Score = Score;
+            Frame.Navigate(typeof(GameOverPage), this);
         }
 
         // mouce movement

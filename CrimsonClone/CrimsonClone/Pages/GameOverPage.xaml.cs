@@ -22,6 +22,9 @@ namespace CrimsonClone
     /// </summary>
     public sealed partial class GameOverPage : Page
     {
+        public int Score { get; set; }
+        public int Time { get; set; }
+
         public GameOverPage()
         {
             this.InitializeComponent();
@@ -29,7 +32,18 @@ namespace CrimsonClone
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Frame.Navigate(typeof(ScorePage));
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //base.OnNavigatedTo(e);
+            if (e.Parameter is GamePage)
+            {
+                GamePage gamePage = (GamePage)e.Parameter;
+                scoreTextBlock.Text = gamePage.Score.ToString();
+                timeTextBlock.Text = gamePage.Time.ToString();
+            }
         }
     }
 }
