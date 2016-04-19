@@ -34,6 +34,11 @@ namespace CrimsonClone.Classes
         // Creat game loop timer
         private DispatcherTimer timer;
 
+
+        private DispatcherTimer fireRate;
+
+        public bool FireTimer = false;
+
         // Variables that express pressed key
         // NOW REDUNDANT
         // USEFLUU AGAIN
@@ -47,10 +52,10 @@ namespace CrimsonClone.Classes
 
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
         // Moved the 900 to the rand itself.
-        private int tickCount = 0;
+        public int tickCount = 0;
 
         // score counter
-        private int score = 0;
+        public int score = 0;
 
         // canvas
         private Canvas canvas;
@@ -94,13 +99,21 @@ namespace CrimsonClone.Classes
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1000 / 60);
+
+            fireRate = new DispatcherTimer();
+            fireRate.Tick += FireRate_Tick;
+            fireRate.Interval = new TimeSpan(0, 0, 0, 1, 0 / 2);
         }
         
         // this method starts the game
         public void StartGame()
         {
             timer.Start();
+            fireRate.Start();
         }
+
+        private void FireRate_Tick(object sender, object e)
+        { FireTimer = true; }
 
         // game loop
         private void Timer_Tick(object sender, object e)
@@ -165,13 +178,14 @@ namespace CrimsonClone.Classes
                 }
             }
 
-            if (LMBPressed)
+            if (LMBPressed && FireTimer)
             {
                 try
                 {
                     DrawProjectile tempProjectile = player.playerCharacter.FireWeapon();
                     projectiles.Add(tempProjectile);
                     canvas.Children.Add(tempProjectile);
+                    FireTimer = false;
                 }
                 catch (Exception ex)
                 {
