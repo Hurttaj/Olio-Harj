@@ -46,7 +46,8 @@ namespace CrimsonClone.Classes
         public bool LMBPressed;
 
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
-        private int tickCount = 900;
+        // Moved the 900 to the rand itself.
+        private int tickCount = 0;
 
         // canvas
         private Canvas canvas;
@@ -217,8 +218,8 @@ namespace CrimsonClone.Classes
                     canvas.Children.Remove(enemy);
                     //Debug.WriteLine("Enemy removed");
                     Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
-                    Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + (tickCount / 1800))));
-                    SpawnEnemies(spawnRand.Next(1, (int)(2 + (tickCount / 1800))));
+                    Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
+                    SpawnEnemies(spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
                     // The tick counter works but for some reason the rand always returns 1.
                 
                 }
