@@ -98,11 +98,11 @@ namespace CrimsonClone.Classes
             // Creat game loop timer 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 1000 / 60);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, (1000 / 60));
 
             fireRate = new DispatcherTimer();
             fireRate.Tick += FireRate_Tick;
-            fireRate.Interval = new TimeSpan(0, 0, 0, 1, 0 / 2);
+            fireRate.Interval = new TimeSpan(0, 0, 0, 0, (1000 / 2));
         }
         
         // this method starts the game
