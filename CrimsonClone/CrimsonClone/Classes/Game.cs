@@ -248,7 +248,7 @@ namespace CrimsonClone.Classes
         {
             for (int i = 1; i <= count; i++)
             {
-                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight));
+                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight), tickCount);
                 enemies.Add(tempEnemy);
                 canvas.Children.Add(tempEnemy);
                 //Debug.WriteLine("Enemy added");
