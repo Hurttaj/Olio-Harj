@@ -28,11 +28,11 @@
         <RelativePanel VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock x:Name="textScore" Text="Score: "
                        Foreground="Black" Padding="0,0,5,0"/>
-            <TextBlock x:Name="scoreTextBlock" Text="{Binding score}" 
+            <TextBlock x:Name="scoreTextBlock" Text="{x:Bind Score, Mode=OneWay}" 
                        Foreground="Black" RelativePanel.RightOf="textScore"/>
             <TextBlock x:Name="textTime" Text="Time: " Foreground="Black" 
                        Padding="0,0,5,0" RelativePanel.Below="scoreTextBlock"/>
-            <TextBlock x:Name="timeTextBlock" Text="00:00.00" 
+            <TextBlock x:Name="timeTextBlock" Text="{x:Bind Time, Mode=OneWay}" 
                        Foreground="Black" RelativePanel.RightOf="textTime" 
                        RelativePanel.Below="scoreTextBlock"/>
         </RelativePanel>
