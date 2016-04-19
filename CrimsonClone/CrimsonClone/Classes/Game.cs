@@ -45,7 +45,8 @@ namespace CrimsonClone.Classes
         // is LMB pressed, comes from GamePage
         public bool LMBPressed;
 
-        private int tickCount = 0;
+        // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
+        private int tickCount = 900;
 
         // canvas
         private Canvas canvas;
