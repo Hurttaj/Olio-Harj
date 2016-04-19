@@ -28,7 +28,7 @@
         <RelativePanel VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock x:Name="textScore" Text="Score: "
                        Foreground="Black" Padding="0,0,5,0"/>
-            <TextBlock x:Name="scoreTextBlock" Text="000000" 
+            <TextBlock x:Name="scoreTextBlock" Text="{Binding score}" 
                        Foreground="Black" RelativePanel.RightOf="textScore"/>
             <TextBlock x:Name="textTime" Text="Time: " Foreground="Black" 
                        Padding="0,0,5,0" RelativePanel.Below="scoreTextBlock"/>

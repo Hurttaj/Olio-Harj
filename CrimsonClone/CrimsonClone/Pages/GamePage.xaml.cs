@@ -30,7 +30,7 @@ namespace CrimsonClone
     {
 
         private Game game;
-
+        public int score { get; set; }
         // Variables that express pressed key
         // NOW REDUNDANT
         // USEFUL AGAIN
