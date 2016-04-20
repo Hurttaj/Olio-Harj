@@ -67,7 +67,9 @@ namespace CrimsonClone.Classes
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
         // Moved the 900 to the rand itself.
         private int tickCount = 0;
-        public int TickCount { get
+        public int TickCount
+        {
+            get
             {
                 return tickCount;
                 //return TickCount;
@@ -82,7 +84,9 @@ namespace CrimsonClone.Classes
 
         // score counter
         private int score = 0;
-        public int Score { get
+        public int Score
+        {
+            get
             {
                 return score;
                 //return Score;

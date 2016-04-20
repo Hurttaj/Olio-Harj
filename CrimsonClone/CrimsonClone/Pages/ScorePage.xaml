@@ -10,12 +10,13 @@
     Height="600">
 
     <Grid>
-        <StackPanel Padding="15" 
+        <StackPanel  
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"
             Background="WhiteSmoke"
             BorderBrush="Gray"
-            BorderThickness="3">
+            BorderThickness="3"
+            Padding="15">
             <TextBlock 
                 Text="Crimsonclone" 
                 VerticalAlignment="Center" 
@@ -29,6 +30,7 @@
                 HorizontalAlignment="Center"
                 Foreground="Black"
                 FontSize="17"
+                FontWeight="Black"
                 />
             <!-- <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>

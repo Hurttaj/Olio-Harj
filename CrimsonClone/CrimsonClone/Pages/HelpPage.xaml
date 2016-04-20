@@ -14,7 +14,8 @@
             HorizontalAlignment="Center"
             Background="WhiteSmoke"
             BorderBrush="Gray"
-            BorderThickness="3">
+            BorderThickness="3"
+            Padding="15">
             <TextBlock 
                 Text="Crimsonclone" 
                 VerticalAlignment="Center" 
@@ -25,6 +26,25 @@
                 />
             <TextBlock
                 Text="Help"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                FontWeight="Black"
+                />
+            <TextBlock
+                Text="- Left mouse button to shoot -"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                />
+            <TextBlock
+                Text="- WASD to move -"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                />
+            <TextBlock
+                Text="- Have fun -"
                 HorizontalAlignment="Center"
                 Foreground="Black"
                 FontSize="17"
