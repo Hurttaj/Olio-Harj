@@ -30,16 +30,18 @@ namespace CrimsonClone
     {
 
         private Game game;
+        
         public int Score { get
             {
-                return game.score;
+                return game.Score;
             }
         }
         public int Time { get
             {
-                return game.tickCount;
+                return game.TickCount;
             }
         }
+        
         // Variables that express pressed key
         // NOW REDUNDANT
         // USEFUL AGAIN

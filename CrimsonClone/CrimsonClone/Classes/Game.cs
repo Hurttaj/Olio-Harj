@@ -1,8 +1,10 @@
 ﻿using CrimsonClone.User_Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.System;
@@ -12,7 +14,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace CrimsonClone.Classes
 {
-    class Game
+    class Game : INotifyPropertyChanged
     {
         // player character drawer
         public DrawPlayerCharacter player;
@@ -34,10 +36,10 @@ namespace CrimsonClone.Classes
         // Creat game loop timer
         private DispatcherTimer timer;
 
-
+        // firerate timer
         private DispatcherTimer fireRate;
 
-        public bool FireTimer = true;
+        private bool fireTimer = true;
 
         // Variables that express pressed key
         // NOW REDUNDANT
@@ -47,15 +49,49 @@ namespace CrimsonClone.Classes
         private bool LeftPressed;
         private bool RightPressed;
 
+        // property changed interface thingy
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // required for updating score and time on the screen
+        protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
         // is LMB pressed, comes from GamePage
         public bool LMBPressed;
 
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
         // Moved the 900 to the rand itself.
-        public int tickCount = 0;
+        public int TickCount { get
+            {
+                // return tickCount;
+                return TickCount;
+            }
+            set
+            {
+                // tickCount = value;
+                RaisePropertyChanged();
+            }
+        }
+        // private int tickCount = 0;
 
         // score counter
-        public int score = 0;
+        public int Score { get
+            {
+                // return score;
+                return Score;
+            }
+            set
+            {
+                // score = value;
+                RaisePropertyChanged();
+            }
+        }
+        // private int score = 0;
 
         // canvas
         private Canvas canvas;
@@ -64,10 +100,12 @@ namespace CrimsonClone.Classes
         private float CanvasWidth;
         private float CanvasHeight;
 
+        // required for game over stuff
         private GamePage gamePage;
-        
+
         public Game(Canvas canvas, GamePage gamePage)
         {
+            // canvas and page initializing stuff for movement and whatnot
             this.canvas = canvas;
             this.gamePage = gamePage;
 
@@ -95,11 +133,16 @@ namespace CrimsonClone.Classes
             // creating four enemies
             SpawnEnemies(4);
 
+            // initialize TickCount and Score to 0
+            TickCount = 0;
+            Score = 0;
+
             // Creat game loop timer 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, (1000 / 60));
 
+            // create firerate dispatcher timer
             fireRate = new DispatcherTimer();
             fireRate.Tick += FireRate_Tick;
             fireRate.Interval = new TimeSpan(0, 0, 0, 0, (1000 / 2));
@@ -112,8 +155,9 @@ namespace CrimsonClone.Classes
             fireRate.Start();
         }
 
+        // this method changes the 
         private void FireRate_Tick(object sender, object e)
-        { FireTimer = true; }
+        { fireTimer = true; }
 
         // game loop
         private void Timer_Tick(object sender, object e)
@@ -178,14 +222,14 @@ namespace CrimsonClone.Classes
                 }
             }
 
-            if (LMBPressed && FireTimer)
+            if (LMBPressed && fireTimer)
             {
                 try
                 {
                     DrawProjectile tempProjectile = player.playerCharacter.FireWeapon();
                     projectiles.Add(tempProjectile);
                     canvas.Children.Add(tempProjectile);
-                    FireTimer = false;
+                    fireTimer = false;
                 }
                 catch (Exception ex)
                 {
@@ -193,7 +237,7 @@ namespace CrimsonClone.Classes
                 }
             }
 
-            tickCount++;
+            TickCount++;
         }
 
         public void EnemyCollision()
@@ -234,11 +278,11 @@ namespace CrimsonClone.Classes
                 {
                     enemies.Remove(enemy);
                     canvas.Children.Remove(enemy);
-                    score += 10;
+                    Score += 10;
                     //Debug.WriteLine("Enemy removed");
                     //Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
                     //Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
-                    SpawnEnemies(spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
+                    SpawnEnemies(spawnRand.Next(1, (int)(2 + ((TickCount+900)/ 1800))));
                     // The tick counter works but for some reason the rand always returns 1.
                 
                 }
@@ -267,7 +311,7 @@ namespace CrimsonClone.Classes
         {
             for (int i = 1; i <= count; i++)
             {
-                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight), tickCount);
+                DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight), TickCount);
                 enemies.Add(tempEnemy);
                 canvas.Children.Add(tempEnemy);
                 //Debug.WriteLine("Enemy added");
