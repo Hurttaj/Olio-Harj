@@ -61,7 +61,7 @@ namespace CrimsonClone
         }
 
         // Creat a list for storing scores
-        private List<double> scores = new List<double>();
+        //private List<double> scores = new List<double>();
         
         public void GameOver()
         {
@@ -70,9 +70,9 @@ namespace CrimsonClone
             Frame.Navigate(typeof(GameOverPage), this);
 
             // Score storing
-            scores.Add(Score);
+            /*scores.Add(Score);
             scores.Sort();
-            scores.Reverse();
+            scores.Reverse();*/
             
 
         }

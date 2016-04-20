@@ -29,10 +29,10 @@ namespace CrimsonClone
         public ScorePage()
         {
             this.InitializeComponent();
-            ReadHS();
+            //ReadHS();
         }
 
-        private async void ReadHS()
+        /*private async void ReadHS()
         {
             scoresFile = await storageFolder.CreateFileAsync("highscore.dat", CreationCollisionOption.OpenIfExists);
             IList<string> readLines = await FileIO.ReadLinesAsync(scoresFile);
@@ -41,7 +41,7 @@ namespace CrimsonClone
                 ScoresTextBlock.Text += line + Environment.NewLine;
                 scores.Add(double.Parse(line));
             }
-        }
+        }*/
 
 
         private void MainMenuButton_Click(object sender, RoutedEventArgs e)

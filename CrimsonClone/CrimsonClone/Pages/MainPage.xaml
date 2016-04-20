@@ -26,10 +26,11 @@
                 FontWeight="Black"
                 />
             <TextBlock
-                Text="Version 1.1"
+                Text="Version 2.0"
                 HorizontalAlignment="Center"
                 Foreground="Black"
                 FontSize="17"
+                FontWeight="Black"
                 />
             <Button
                 x:Name="PlayButton"
