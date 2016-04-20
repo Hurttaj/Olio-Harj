@@ -10,7 +10,7 @@
     Height="600">
 
     <Grid>
-        <StackPanel 
+        <StackPanel Padding="15" 
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"
             Background="WhiteSmoke"
@@ -30,7 +30,7 @@
                 Foreground="Black"
                 FontSize="17"
                 />
-            <Grid HorizontalAlignment="Center">
+            <!-- <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="100"/>
@@ -47,7 +47,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Text="Name" Foreground="Black" 
                            Grid.Row="0" Grid.Column="0"
                            Name="ScoreName1"/>
@@ -109,7 +109,12 @@
                 <TextBlock Text="000000" Foreground="Black"
                            Grid.Row="9" Grid.Column="1"
                            Name="Score10" TextAlignment="Right"/>
-            </Grid>
+            </Grid> -->
+
+            
+                <TextBlock x:Name="ScoresTextBlock" Width="200" Height="300" RelativePanel.RightOf="PlayButton" Margin="10" />
+            
+
             <Button x:Name="MainMenuButton" Content="Go to Main Menu"
                     Foreground="Black"  
                     HorizontalAlignment="Center"
