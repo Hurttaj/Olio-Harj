@@ -49,7 +49,7 @@ namespace CrimsonClone
         // REMOVED AGAIN  
 
 
-        Binding MyBinding = new Binding();  
+        // Binding MyBinding = new Binding();  
 
         public GamePage()
         {

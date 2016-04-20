@@ -66,32 +66,34 @@ namespace CrimsonClone.Classes
 
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
         // Moved the 900 to the rand itself.
+        private int tickCount = 0;
         public int TickCount { get
             {
-                // return tickCount;
-                return TickCount;
+                return tickCount;
+                //return TickCount;
             }
             set
             {
-                // tickCount = value;
+                tickCount = value;
+                //TickCount = value;
                 RaisePropertyChanged();
             }
         }
-        // private int tickCount = 0;
 
         // score counter
+        private int score = 0;
         public int Score { get
             {
-                // return score;
-                return Score;
+                return score;
+                //return Score;
             }
             set
             {
-                // score = value;
+                score = value;
+                //Score = value;
                 RaisePropertyChanged();
             }
         }
-        // private int score = 0;
 
         // canvas
         private Canvas canvas;
@@ -145,7 +147,7 @@ namespace CrimsonClone.Classes
             // create firerate dispatcher timer
             fireRate = new DispatcherTimer();
             fireRate.Tick += FireRate_Tick;
-            fireRate.Interval = new TimeSpan(0, 0, 0, 0, (1000 / 2));
+            fireRate.Interval = new TimeSpan(0, 0, 0, 0, (10000 / 25));
         }
         
         // this method starts the game
