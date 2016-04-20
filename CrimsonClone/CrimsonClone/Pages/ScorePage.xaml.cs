@@ -23,25 +23,15 @@ namespace CrimsonClone
     /// </summary>
     public sealed partial class ScorePage : Page
     {
-        private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-        private StorageFile scoresFile;
+      
 
         public ScorePage()
         {
             this.InitializeComponent();
-            ReadHS();
+           
         }
 
-        private async void ReadHS()
-        {
-            scoresFile = await storageFolder.CreateFileAsync("highscore.dat", CreationCollisionOption.OpenIfExists);
-            IList<string> readLines = await FileIO.ReadLinesAsync(scoresFile);
-            foreach (var line in readLines)
-            {
-                ScoresTextBlock.Text += line + Environment.NewLine;
-                scores.Add(double.Parse(line));
-            }
-        }
+
 
 
         private void MainMenuButton_Click(object sender, RoutedEventArgs e)

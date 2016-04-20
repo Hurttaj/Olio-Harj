@@ -60,19 +60,13 @@ namespace CrimsonClone
             game.StartGame();
         }
 
-        // Creat a list for storing scores
-        private List<double> scores = new List<double>();
+        
         
         public void GameOver()
         {
             //Debug.WriteLine("Test line");
             //(GamePage.Current as GamePage).Score = Score;
             Frame.Navigate(typeof(GameOverPage), this);
-
-            // Score storing
-            scores.Add(Score);
-            scores.Sort();
-            scores.Reverse();
             
 
         }
