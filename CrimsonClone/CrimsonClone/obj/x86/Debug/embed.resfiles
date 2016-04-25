@@ -1,0 +1,10 @@
+App.xbf
+Pages\CreditsPage.xbf
+Pages\GameOverPage.xbf
+Pages\GamePage.xbf
+Pages\HelpPage.xbf
+Pages\MainPage.xbf
+Pages\ScorePage.xbf
+User Controls\DrawEnemyCharacter.xbf
+User Controls\DrawPlayerCharacter.xbf
+User Controls\DrawProjectile.xbf

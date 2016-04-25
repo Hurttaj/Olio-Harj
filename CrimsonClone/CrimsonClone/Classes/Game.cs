@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -16,6 +17,33 @@ namespace CrimsonClone.Classes
 {
     class Game : INotifyPropertyChanged
     {
+        private MediaElement fireAudio;
+        private MediaElement deathAudio;
+
+        private async void FireSound()
+        {
+            // create media element
+            fireAudio = new MediaElement();
+            // load audio from assets
+            StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file = await folder.GetFileAsync("FireAudio.wav");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            fireAudio.AutoPlay = false;
+            fireAudio.SetSource(stream, file.ContentType);
+        }
+
+        private async void DeathSound()
+        {
+            // create media element
+            deathAudio = new MediaElement();
+            // load audio from assets
+            StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file = await folder.GetFileAsync("DeathAudio.wav");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            deathAudio.AutoPlay = false;
+            deathAudio.SetSource(stream, file.ContentType);
+        }
+
         // player character drawer
         public DrawPlayerCharacter player;
 
@@ -114,6 +142,9 @@ namespace CrimsonClone.Classes
             // canvas and page initializing stuff for movement and whatnot
             this.canvas = canvas;
             this.gamePage = gamePage;
+
+            FireSound();
+            DeathSound();
 
             // IsGameOver = false;
 
@@ -235,6 +266,7 @@ namespace CrimsonClone.Classes
                     DrawProjectile tempProjectile = player.playerCharacter.FireWeapon();
                     projectiles.Add(tempProjectile);
                     canvas.Children.Add(tempProjectile);
+                    fireAudio.Play();
                     fireTimer = false;
                 }
                 catch (Exception ex)
@@ -283,6 +315,7 @@ namespace CrimsonClone.Classes
                 try
                 {
                     enemies.Remove(enemy);
+                    deathAudio.Play();
                     canvas.Children.Remove(enemy);
                     Score += 10;
                     //Debug.WriteLine("Enemy removed");

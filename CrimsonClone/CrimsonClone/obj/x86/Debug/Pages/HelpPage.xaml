@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="CrimsonClone.HelpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CrimsonClone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="800"
+    Height="600">
+
+    <Grid>
+        <StackPanel 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            Background="WhiteSmoke"
+            BorderBrush="Gray"
+            BorderThickness="3"
+            Padding="15">
+            <TextBlock 
+                Text="Crimsonclone" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Foreground="#900" 
+                FontSize="45"
+                FontWeight="Black"
+                />
+            <TextBlock
+                Text="Help"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                FontWeight="Black"
+                />
+            <TextBlock
+                Text="- Left mouse button to shoot -"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                />
+            <TextBlock
+                Text="- WASD to move -"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                />
+            <TextBlock
+                Text="- Have fun -"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="17"
+                />
+            <Button x:ConnectionId='1' x:Name="MainMenuButton" Content="Go to Main Menu"
+                    Foreground="Black"  
+                    HorizontalAlignment="Center"
+                    Margin="10"                             />
+        </StackPanel>
+    </Grid>
+</Page>
+
