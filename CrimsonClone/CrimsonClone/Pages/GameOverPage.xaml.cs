@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CrimsonClone.Classes;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -25,20 +28,25 @@ namespace CrimsonClone
     {
         // Score Storing
         private List<int> scores = new List<int>();
-        private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-        private StorageFile scoresFile;
-
+        List<Player> players = new List<Player>();
+        Player player = new Player();
         public int Score { get; set; }
         public int Time { get; set; }
+        public string playerName { get; set; }
+
+        //private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+        //private StorageFile scoresFile;
+
+        
 
         public GameOverPage()
         {
             this.InitializeComponent();
-            ReadHS();
+            
         }
 
         // Creating highscore.dat for storing scores
-        private async void ReadHS()
+        /*private async void ReadHighScore()
         {
             scoresFile = await storageFolder.CreateFileAsync("highscore.dat", CreationCollisionOption.OpenIfExists);
             IList<string> readLines = await FileIO.ReadLinesAsync(scoresFile);
@@ -46,11 +54,56 @@ namespace CrimsonClone
             {
                 scores.Add(int.Parse(line));
             }
-        }
+        }*/
 
-        private void okButton_Click(object sender, RoutedEventArgs e)
+        private async void okButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ScorePage));
+
+            // as the okButton pressed an object will be created
+            Player player = new Player();
+            player.name = nameTextBox.Text;
+            player.points = Score;
+            players.Add(player);
+
+            try
+            {
+                // Creating highscore.dat for storing scores
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                StorageFile scoresFile = await storageFolder.CreateFileAsync("highscore.dat", CreationCollisionOption.OpenIfExists);
+
+                // save players to disk
+                Stream stream = await scoresFile.OpenStreamForWriteAsync();
+                DataContractSerializer serializer = new DataContractSerializer(typeof(List<Player>));
+                serializer.WriteObject(stream, players);
+                await stream.FlushAsync();
+                stream.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Following exception has happend (writing): " + ex.ToString());
+            }
+        }
+
+        private async void ReaderMethod()
+        {
+            try
+            {
+                // Finding the file
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                Stream stream = await storageFolder.OpenStreamForReadAsync("highscore.dat");
+
+                // Is the file empty?
+                if(stream == null) players = new List<Player>();
+
+                // Reading the file
+                DataContractSerializer serializer = new DataContractSerializer(typeof(List<Player>));
+                players = (List<Player>)serializer.ReadObject(stream);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Following exception has happend (reading): " + ex.ToString());
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
