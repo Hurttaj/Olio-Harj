@@ -26,7 +26,7 @@ namespace CrimsonClone
     /// </summary>
     public sealed partial class GameOverPage : Page
     {
-        // Score Storing
+        // Score Storing Variables
         private List<int> scores = new List<int>();
         List<Player> players = new List<Player>();
         Player player = new Player();
@@ -42,7 +42,9 @@ namespace CrimsonClone
         public GameOverPage()
         {
             this.InitializeComponent();
-            
+            FileReader();
+
+
         }
 
         // Creating highscore.dat for storing scores
@@ -65,6 +67,14 @@ namespace CrimsonClone
             player.name = nameTextBox.Text;
             player.points = Score;
             players.Add(player);
+            players.Sort();
+            players.Reverse();
+            int i = 0;
+            foreach (Player d in players)
+            {
+                i++;
+                if (i >= 10) break; // only show 10 highest scores
+            }
 
             try
             {
@@ -85,7 +95,7 @@ namespace CrimsonClone
             }
         }
 
-        private async void ReaderMethod()
+        private async void FileReader()
         {
             try
             {
