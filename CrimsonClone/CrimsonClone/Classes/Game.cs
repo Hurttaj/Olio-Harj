@@ -18,17 +18,17 @@ namespace CrimsonClone.Classes
     class Game : INotifyPropertyChanged
     {
 
-        //Audio from: https://www.freesound.org/people/D%20W/sounds/143610/ No changes were made.
+        /// Audio from: https://www.freesound.org/people/D%20W/sounds/143610/ No changes were made.
         private MediaElement fireAudio;
 
-        //Audio from: https://www.freesound.org/people/yottasounds/sounds/232135/ No changes were made.
+        /// Audio from: https://www.freesound.org/people/yottasounds/sounds/232135/ No changes were made.
         private MediaElement deathAudio;
 
         private async void FireSound()
         {
-            // create media element
+            /// create media element
             fireAudio = new MediaElement();
-            // load audio from assets
+            /// load audio from assets
             StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
             StorageFile file = await folder.GetFileAsync("FireAudio.wav");
             var stream = await file.OpenAsync(FileAccessMode.Read);
@@ -38,9 +38,9 @@ namespace CrimsonClone.Classes
 
         private async void DeathSound()
         {
-            // create media element
+            /// create media element
             deathAudio = new MediaElement();
-            // load audio from assets
+            /// load audio from assets
             StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
             StorageFile file = await folder.GetFileAsync("DeathAudio.wav");
             var stream = await file.OpenAsync(FileAccessMode.Read);
@@ -48,32 +48,33 @@ namespace CrimsonClone.Classes
             deathAudio.SetSource(stream, file.ContentType);
         }
 
-        // player character drawer
+        /// player character drawer
         public DrawPlayerCharacter player;
 
-        // list for enemy characters
+        /// list for enemy characters
         public List<DrawEnemyCharacter> enemies;
-        // list for to-be-removed enemies
+        /// list for to-be-removed enemies
         public List<DrawEnemyCharacter> removeEnemies;
 
-        // rng for enemy spawn
+        /// rng for enemy spawn
         private Random spawnRand = new Random();
         private Random enemyRand = new Random();
 
-        // list for projectiles
+        /// list for projectiles
         public List<DrawProjectile> projectiles;
-        // list for to-be-removed projectiles
+        /// list for to-be-removed projectiles
         public List<DrawProjectile> removeProjectiles;
 
-        // Creat game loop timer
+        /// Creat game loop timer
         private DispatcherTimer timer;
 
-        // firerate timer
+        /// firerate timer
         private DispatcherTimer fireRate;
 
+        /// boolean determing wether or not you are allowed to shoot
         private bool fireTimer = true;
 
-        // Variables that express pressed key
+        /// Variables that express pressed key
         // NOW REDUNDANT
         // USEFLUU AGAIN
         private bool UpPressed;
@@ -81,10 +82,10 @@ namespace CrimsonClone.Classes
         private bool LeftPressed;
         private bool RightPressed;
 
-        // property changed interface thingy
+        /// property changed interface thingy
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // required for updating score and time on the screen
+        /// required for updating score and time on the screen
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null)
@@ -92,10 +93,12 @@ namespace CrimsonClone.Classes
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        // is LMB pressed, comes from GamePage
+        
+        /// is LMB pressed, comes from GamePage
         public bool LMBPressed;
 
+        
+        /// TickCount is simply the amount of ticks palyed; how many times the game loop has been completed
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
         // Moved the 900 to the rand itself.
         private int tickCount = 0;
@@ -114,7 +117,7 @@ namespace CrimsonClone.Classes
             }
         }
 
-        // score counter
+        /// score counter; is increased when enemies are killed
         private int score = 0;
         public int Score
         {
@@ -127,23 +130,25 @@ namespace CrimsonClone.Classes
             {
                 score = value;
                 //Score = value;
+
+                /// notifies that the Score has been changed
                 RaisePropertyChanged();
             }
         }
 
-        // canvas
+        /// canvas
         private Canvas canvas;
 
-        // canvas sizes
+        /// canvas sizes
         private float CanvasWidth;
         private float CanvasHeight;
 
-        // required for game over stuff
+        /// required for game over stuff
         private GamePage gamePage;
 
         public Game(Canvas canvas, GamePage gamePage)
         {
-            // canvas and page initializing stuff for movement and whatnot
+            /// canvas and page initializing stuff for movement and whatnot
             this.canvas = canvas;
             this.gamePage = gamePage;
 
@@ -152,83 +157,88 @@ namespace CrimsonClone.Classes
 
             // IsGameOver = false;
 
-            // Keyboard listeners
+            /// Keyboard listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
 
-            // initializing canwas size data
+            /// initializing canvas size data
             CanvasWidth = (float)canvas.Width;
             CanvasHeight = (float)canvas.Height;
 
-            // create player
+            /// create player
             player = new DrawPlayerCharacter(CanvasWidth / 2, CanvasHeight / 2);
             canvas.Children.Add(player);
+            /// updates players position on canvas
             player.UpdatePosition();
 
-            // create enemy list
+            /// create enemy list
             enemies = new List<DrawEnemyCharacter>();
        
-            // create projectile list
+            /// create projectile list
             projectiles = new List<DrawProjectile>();
 
-            // creating four enemies
+            /// creating four enemies
             SpawnEnemies(4);
 
-            // initialize TickCount and Score to 0
+            /// initialize TickCount and Score to 0
             TickCount = 0;
             Score = 0;
 
-            // Creat game loop timer 
+            /// create game loop timer 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, (1000 / 60));
 
-            // create firerate dispatcher timer
+            /// create firerate dispatcher timer
             fireRate = new DispatcherTimer();
             fireRate.Tick += FireRate_Tick;
             fireRate.Interval = new TimeSpan(0, 0, 0, 0, (10000 / 25));
         }
         
-        // this method starts the game
+        /// this method starts the game
         public void StartGame()
         {
+            /// starts game- and firerate -timers
             timer.Start();
             fireRate.Start();
         }
 
-        // this method changes the 
+        /// this method changes the firerate boolean, wether or not you are allowed to shoot
         private void FireRate_Tick(object sender, object e)
         { fireTimer = true; }
 
-        // game loop
+        /// game loop
         private void Timer_Tick(object sender, object e)
         {
-            // player movement
+            /// player movement initial directions
             float dirX = 0;
             float dirY = 0;
 
-            // these dictate the direction in wich the player moves
+            /// these dictate the direction in wich the player moves
             if (UpPressed) dirY -= 1;
             if (DownPressed) dirY += 1;
             if (LeftPressed) dirX -= 1;
             if (RightPressed) dirX += 1;
 
-            // player movement method is called
+            /// player movement method is called
             player.playerCharacter.Move(dirX, dirY);
+            /// updates players position on canvas
             player.UpdatePosition();
 
-            // moving enemies
+            /// moving enemies
             foreach (DrawEnemyCharacter enemy in enemies)
             {
                 enemy.enemyCharacter.Move(player.playerCharacter.PositionX, player.playerCharacter.PositionY);
                 enemy.UpdatePosition();
             }
+
+            /// calls enemy collision
             EnemyCollision();
 
-            // initialize prjectile removal list
+            /// initialize projectile removal list
             removeProjectiles = new List<DrawProjectile>();
 
-            // moving projectiles
+            /// moving projectiles
             foreach (DrawProjectile projectile in projectiles)
             {
                 projectile.bullet.Move();
@@ -247,7 +257,7 @@ namespace CrimsonClone.Classes
                 }   
             }
 
-            // removing projectiles
+            /// removing projectiles
             foreach (DrawProjectile projectile in removeProjectiles)
             {
                 try
@@ -263,6 +273,8 @@ namespace CrimsonClone.Classes
                 }
             }
 
+
+            /// calls fireWeapon if you are allowed to fire
             if (LMBPressed && fireTimer)
             {
                 try
@@ -279,19 +291,29 @@ namespace CrimsonClone.Classes
                 }
             }
 
+            /// increases tick count
             TickCount++;
         }
 
+        /// <summary>
+        /// Enemy collision method
+        /// Checks wether or not enemies collide with projectiles or the player
+        /// </summary>
         public void EnemyCollision()
         {
             //Debug.WriteLine("Enemy collision check");
+
+            /// initialize removal lists
             removeEnemies = new List<DrawEnemyCharacter>();
             removeProjectiles = new List<DrawProjectile>();
 
+            /// collision checks
             foreach (DrawEnemyCharacter enemy in enemies)
             {
+                /// used for break check; used for breaking the main collision check loop
                 bool breaker = false;
 
+                /// enemy-player collision checks
                 if (enemy.enemyCharacter.Collision(player.playerCharacter))
                 {
                     // Game over
@@ -300,11 +322,12 @@ namespace CrimsonClone.Classes
                     gamePage.GameOver();
                 }
 
+                /// enemy-projectile collision checks
                 foreach (DrawProjectile projectile in projectiles)
                 {
                     if(enemy.enemyCharacter.Collision(projectile.bullet))
                     {
-                        
+                        /// if collision happens, enemy and projectile are both added to their removal list
                         removeEnemies.Add(enemy);
                         removeProjectiles.Add(projectile);
                         //Debug.WriteLine("Enemy added to remove list");
@@ -314,17 +337,22 @@ namespace CrimsonClone.Classes
                 }
                 if (breaker == true) break;
             }
+
+            /// removes enemies from canvas and enemy list, and also plays death sound for each
             foreach (DrawEnemyCharacter enemy in removeEnemies)
             {
                 try
                 {
                     enemies.Remove(enemy);
+                    /// plays death sound
                     deathAudio.Play();
                     canvas.Children.Remove(enemy);
+                    /// increases core by 100 per dead enemy
                     Score += 100;
                     //Debug.WriteLine("Enemy removed");
                     //Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
                     //Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));
+                    /// spawns new enemy; amount of enemies spawned is partially determined by game time
                     SpawnEnemies(spawnRand.Next(1, (int)(2 + ((TickCount+900)/ 1800))));
                     // The tick counter works but for some reason the rand always returns 1.
                 
@@ -335,6 +363,7 @@ namespace CrimsonClone.Classes
                 }
             }
 
+            /// removes projectiles from canvas and projectile list
             foreach (DrawProjectile projectile in removeProjectiles)
             {
                 try
@@ -349,11 +378,17 @@ namespace CrimsonClone.Classes
             }
         }
 
-        // enemy spawn method
+        /// <summary>
+        /// Enemy spawn method
+        /// </summary>
+        /// <param name="count">how many enemies are to be spawned</param>
         private void SpawnEnemies(int count)
         {
             for (int i = 1; i <= count; i++)
             {
+                /// creates a new temporary enemy that is to be added to canvas and enemy list
+                /// spawn location is determined randomly
+                /// tick count increases speed
                 DrawEnemyCharacter tempEnemy = new DrawEnemyCharacter(enemyRand.Next(1, (int)CanvasWidth), enemyRand.Next(1, (int)CanvasHeight), TickCount);
                 enemies.Add(tempEnemy);
                 canvas.Children.Add(tempEnemy);
@@ -361,9 +396,11 @@ namespace CrimsonClone.Classes
             }
             
         }
-
-        // W,A,S,D keys difinitions
-        // And checking if they are pressed
+        
+        /// <summary>
+        /// W,A,S,D keys definitions
+        /// And checking if they are pressed
+        /// </summary>
         private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs args)
         {
             switch (args.VirtualKey)
@@ -386,6 +423,10 @@ namespace CrimsonClone.Classes
             }
         }
 
+        /// <summary>
+        /// W,A,S,D keys definitions
+        /// And checking if they are released
+        /// </summary>
         private void CoreWindow_KeyUp(CoreWindow sender, KeyEventArgs args)
         {
             switch (args.VirtualKey)
