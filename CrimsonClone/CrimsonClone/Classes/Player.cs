@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace CrimsonClone.Classes
 {
-    // This class is created to
-    // hold data in according to enable score storing
-
+    /// <summary>
+    /// This class holds score data for each player
+    /// Enables score storing
+    /// </summary>
     public class Player
     {
-
         public string Name { get; set; }
         public int Points { get; set; }
-
     }
 }
