@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace CrimsonClone.Classes
 {
+    /// <summary>
+    /// This is a class for the player character
+    /// </summary>
     public class PlayerCharacter : CollisionObject
     {
-        // speed settings
+        /// speed settings
         private readonly double maxSpeed = 10.0;
         private readonly double accelerate = 0.7;
         private double speed = 0;
@@ -26,6 +29,10 @@ namespace CrimsonClone.Classes
         public bool LMBPressed;
         */
 
+        /// <summary>
+        /// Player character's default constructor
+        /// </summary>
+        /// <param name="radius">required for collision checks</param>
         // Constructor. Vector2 is a property that marks the centerpoint as a coordinate. 
         public PlayerCharacter(double radius)
         {
@@ -55,6 +62,11 @@ namespace CrimsonClone.Classes
             } 
         }*/
 
+        /// <summary>
+        /// Player's movement method
+        /// </summary>
+        /// <param name="dirX">direction on X-axis; if positive, moves towards positive X</param>
+        /// <param name="dirY">direction on Y-axis; if positive, moves towards positive Y</param>
         public void Move(float dirX, float dirY)
         {
             /*
@@ -67,19 +79,19 @@ namespace CrimsonClone.Classes
             if (RightPressed) dirX += 1;
             */
 
-            // speed settings; speed and acceleration are defined in class's private fields
+            /// speed settings; speed and acceleration are defined in class's private fields
             speed += accelerate;
             if (speed > maxSpeed) speed = maxSpeed;
 
-            // if X or Y change is 0, there's no need for further calculation
+            /// if X or Y change is 0, there's no need for further calculation
             if (dirX == 0 || dirY == 0)
             {
                 PositionX += (float)speed * dirX;
                 PositionY += (float)speed * dirY;
             }
 
-            // if both X and Y change, the actual amount of movement has to be re-evaluated so that the movement area is not a square but rather a stop-sign
-            // this way speed stays the same regardless of the direction of the movement
+            /// if both X and Y change, the actual amount of movement has to be re-evaluated so that the movement area is not a square but rather a stop-sign
+            /// this way speed stays the same regardless of the direction of the movement
             else
             {
                 // (Math.PI/4) is 45 degrees in radians
@@ -88,6 +100,10 @@ namespace CrimsonClone.Classes
             }
         }
 
+        /// <summary>
+        /// Method for firing a weapon
+        /// </summary>
+        /// <returns>a new draw projectile</returns>
         public DrawProjectile FireWeapon()
         {
             return new DrawProjectile(PositionX + (float)Radius, PositionY + (float)Radius, CursorX, CursorY);
