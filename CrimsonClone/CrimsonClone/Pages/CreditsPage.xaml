@@ -39,7 +39,7 @@
                 FontSize="17"
                 />
             <TextBlock
-                Text="Code by: Borhan Amiri, Jussi Hurtta and Juuso Minkkilä&#x0a;"
+                Text="Code by: Borhan Amini, Jussi Hurtta and Juuso Minkkilä&#x0a;"
                 HorizontalAlignment="Center"
                 Foreground="Black"
                 FontSize="17"
