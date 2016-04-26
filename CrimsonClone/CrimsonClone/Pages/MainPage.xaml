@@ -13,10 +13,8 @@
         <StackPanel 
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"
-            Background="WhiteSmoke"
-            BorderBrush="Gray"
             BorderThickness="3"
-            Padding="15">
+            Padding="15" Background="WhiteSmoke" BorderBrush="#FFA26A6A">
             <TextBlock 
                 Text="Crimsonclone" 
                 VerticalAlignment="Center" 
@@ -38,9 +36,9 @@
                 HorizontalAlignment="Center"
                 Width="100"
                 Margin="5"
-                Foreground="Black"
-                Background="LightGray"
-                Click="PlayButton_Click"
+                Foreground="#FFEE9D4D"
+                Background="#FF990000"
+                Click="PlayButton_Click" BorderBrush="#FFA26A6A"
                 />
             <Button
                 x:Name="ScoreButton"
@@ -48,9 +46,9 @@
                 HorizontalAlignment="Center"
                 Width="100"
                 Margin="5"
-                Foreground="Black"
-                Background="LightGray"
-                Click="ScoreButton_Click"
+                Foreground="#FFEE9D4D"
+                Background="#FF990000"
+                Click="ScoreButton_Click" BorderBrush="#FFA26A6A"
                 />
             <Button
                 x:Name="HelpButton"
@@ -58,9 +56,9 @@
                 HorizontalAlignment="Center"
                 Width="100"
                 Margin="5"
-                Foreground="Black"
-                Background="LightGray"
-                Click="HelpButton_Click"
+                Foreground="#FFEE9D4D"
+                Background="#FF990000"
+                Click="HelpButton_Click" BorderBrush="#FFA26A6A"
                 />
             <Button
                 x:Name="CreditsButton"
@@ -68,9 +66,9 @@
                 HorizontalAlignment="Center"
                 Width="100"
                 Margin="5"
-                Foreground="Black"
-                Background="LightGray"
-                Click="CreditsButton_Click"
+                Foreground="#FFEE9D4D"
+                Background="#FF990000"
+                Click="CreditsButton_Click" BorderBrush="#FFA26A6A"
                 />
         </StackPanel>
     </Grid>

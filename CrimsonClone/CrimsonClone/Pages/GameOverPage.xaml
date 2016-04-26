@@ -14,7 +14,7 @@
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"
             Background="WhiteSmoke"
-            BorderBrush="Gray"
+            BorderBrush="#FFA26A6A"
             BorderThickness="3"
             Padding="15">
             <TextBlock Text="Game Over" 
@@ -37,7 +37,7 @@
             <TextBlock x:Name="timeTextBlock" 
                        TextAlignment="Center"
                        FontSize="17"
-                       Foreground="#000"/>
+                       Foreground="Black"/>
             <TextBlock Text="Please enter your name" 
                        TextAlignment="Center"
                        FontSize="17"
@@ -45,12 +45,12 @@
             <TextBox x:Name="nameTextBox"
                      FontSize="17"
                      Foreground="#000"
-                     Margin="2"/>
+                     Margin="2" Background="#FF9C3B3B"/>
             <Button x:Name="okButton" 
                     Content="OK" 
                     HorizontalAlignment="Center"
                     Margin="2"
-                    Click="okButton_Click"/>
+                    Click="okButton_Click" Background="#FF990000" BorderBrush="#FFA26A6A" Foreground="#FFEE9D4D"/>
         </StackPanel>
     </Grid>
 </Page>
