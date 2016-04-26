@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,10 +31,15 @@ using Windows.UI.Xaml.Navigation;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This is the first page of the application
+    /// It mainly acts as a hub-page to allow movement to other pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// Default constructor
+        /// Set's preferred window size
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
@@ -30,6 +47,13 @@ namespace CrimsonClone
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.PreferredLaunchViewSize = new Size(800, 600);
         }
+
+        /// <summary>
+        /// methods that are called when certain buttons are pressed
+        /// changes the frame to a related page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {

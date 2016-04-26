@@ -1,4 +1,16 @@
-﻿using CrimsonClone.Classes;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using CrimsonClone.Classes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,14 +34,21 @@ using Windows.UI.Xaml.Navigation;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page is navigated to when a game over happens
     /// </summary>
     public sealed partial class GameOverPage : Page
     {
         // Score Storing Variables
         //private List<int> scores = new List<int>();
+        /// <summary>
+        /// Lists for high scores
+        /// top10 is later written into a file
+        /// </summary>
         List<Player> players = new List<Player>();
         List<Player> top10 = new List<Player>();
+        /// <summary>
+        /// Player for current score
+        /// </summary>
         Player player = new Player();
         public int Score { get; set; }
         public int Time { get; set; }
@@ -39,13 +58,14 @@ namespace CrimsonClone
         //private StorageFile scoresFile;
 
         
-
+        /// <summary>
+        /// Default constructor
+        /// initializes the page and calls for file reader
+        /// </summary>
         public GameOverPage()
         {
             this.InitializeComponent();
             FileReader();
-
-
         }
 
         // Creating highscore.dat for storing scores
@@ -59,36 +79,46 @@ namespace CrimsonClone
             }
         }*/
 
+        /// <summary>
+        /// This method is called when the "okButton" is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void okButton_Click(object sender, RoutedEventArgs e)
         {
-            
-
             //FileReader();
 
-            // as the okButton pressed an object will be created
+            /// as the okButton pressed a Player-object will be created
             Player player = new Player();
+
+            /// settings for player
             player.Name = nameTextBox.Text;
             //player.Name = Name;
             player.Points = Score;
+
+            /// player list manipulation
             players.Add(player);
+            /// required for correct comparison
             players.Sort((x, y) => x.Points.CompareTo(y.Points));
             players.Reverse();
+
+            /// loop to move 10 best scores from players to top10
             int i = 0;
             foreach (Player d in players)
             {
-                // moving player d to top10 list
+                /// moving player d to top10 list
                 top10.Add(d);
                 i++;
-                if (i >= 10) break; // only show 10 highest scores
+                if (i >= 10) break; /// only move 10 highest scores
             }
 
             try
             {
-                // Creating highscore.dat for storing scores
+                /// Creating highscore.dat for storing scores
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 StorageFile scoresFile = await storageFolder.CreateFileAsync("highscores2.dat", CreationCollisionOption.ReplaceExisting);
 
-                // save players to disk
+                /// save players to disk
                 Stream stream = await scoresFile.OpenStreamForWriteAsync();
                 DataContractSerializer serializer = new DataContractSerializer(typeof(List<Player>));
                 serializer.WriteObject(stream, top10);
@@ -100,21 +130,25 @@ namespace CrimsonClone
                 Debug.WriteLine("Following exception has happend (writing): " + ex.ToString());
             }
 
+            /// navigate to score page
             this.Frame.Navigate(typeof(ScorePage));
         }
 
+        /// <summary>
+        /// reads the score file
+        /// </summary>
         private async void FileReader()
         {
             try
             {
-                // Finding the file
+                /// Finding the file
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 Stream stream = await storageFolder.OpenStreamForReadAsync("highscores2.dat");
 
-                // Is the file empty?
+                /// Is the file empty?
                 if(stream == null) players = new List<Player>();
 
-                // Reading the file
+                /// Reading the file
                 DataContractSerializer serializer = new DataContractSerializer(typeof(List<Player>));
                 players = (List<Player>)serializer.ReadObject(stream);
             }
@@ -124,15 +158,20 @@ namespace CrimsonClone
             }
         }
 
+        /// <summary>
+        /// This method is called, when tis page is navigated to
+        /// </summary>
+        /// <param name="e">should be game page</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //base.OnNavigatedTo(e);
+            /// check wether or not sent page is the type gamepage
             if (e.Parameter is GamePage)
             {
-                // using GamePage so we can get it's parameters and stuff
+                /// using GamePage so we can get it's parameters and stuff
                 GamePage gamePage = (GamePage)e.Parameter;
 
-                // initializing stuff
+                /// initializing and displaying score and name
                 Score = int.Parse(gamePage.Score.ToString());
                 scoreTextBlock.Text = Score.ToString();
                 Time = int.Parse(gamePage.Time.ToString());
@@ -159,10 +198,5 @@ namespace CrimsonClone
                 */
             }
         }
-
-        
-
-
-
     }
 }

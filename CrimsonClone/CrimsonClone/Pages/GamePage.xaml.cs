@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using System;
 using CrimsonClone.User_Controls;
 using System.Collections.Generic;
 using System.IO;
@@ -25,11 +37,13 @@ using Windows.Storage;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page contains the actual game
     /// </summary>
     public sealed partial class GamePage : Page
     {
-
+        /// <summary>
+        /// Logical game
+        /// </summary>
         private Game game;
         
         public int Score { get
@@ -51,17 +65,21 @@ namespace CrimsonClone
 
         // Binding MyBinding = new Binding();  
 
+        /// <summary>
+        /// default constructor
+        /// initializes a new game and starts its timer
+        /// </summary>
         public GamePage()
         {
-
             this.InitializeComponent();
 
             game = new Game(GameCanvas, this);
             game.StartGame();
         }
 
-        
-        
+        /// <summary>
+        /// Is called when the game over requirement is reached within game
+        /// </summary>
         public void GameOver()
         {
             //Debug.WriteLine("Test line");
@@ -71,7 +89,7 @@ namespace CrimsonClone
 
         }
 
-        // mouce movement
+        /// mouse movement detection
         private void MyCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             PointerPoint pointerPoint = e.GetCurrentPoint(this);
@@ -80,7 +98,8 @@ namespace CrimsonClone
         }
 
 
-        // mouse click. 13.4 Fixed to only work on left click
+        /// mouse click detection 
+        //13.4 Fixed to only work on left click
         private void GameCanvas_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             Windows.UI.Xaml.Input.Pointer ptr = e.Pointer;
@@ -92,7 +111,8 @@ namespace CrimsonClone
             }
             
         }
-
+        
+        /// is called if left mouse button is released
         private void GameCanvas_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             game.LMBPressed = false;

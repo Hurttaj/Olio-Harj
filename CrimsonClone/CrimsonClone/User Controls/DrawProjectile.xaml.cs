@@ -1,4 +1,16 @@
-﻿using CrimsonClone.Classes;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using CrimsonClone.Classes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,22 +31,40 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CrimsonClone.User_Controls
 {
+    /// <summary>
+    /// visual representation of a projectile
+    /// </summary>
     public sealed partial class DrawProjectile : UserControl
     {
+        /// <summary>
+        /// actual, logical projectile
+        /// </summary>
         public Projectile bullet;
-        
+
+        /// <summary>
+        /// default constructor
+        /// </summary>
+        /// <param name="PositionX">initial X position</param>
+        /// <param name="PositionY">initial Y position</param>
+        /// <param name="CursorX">X direction</param>
+        /// <param name="CursorY">Y direction</param>
         public DrawProjectile(float PositionX, float PositionY, float CursorX, float CursorY)
         {
             this.InitializeComponent();
 
+            /// width and height settings
             Width = 6;
             Height = 6;
 
+            /// creates a new projectile
             bullet = new Projectile(Width / 2, PositionX, PositionY, CursorX, CursorY);
             UpdatePosition();
             SetValue(Canvas.ZIndexProperty, -5);
         }
 
+        /// <summary>
+        /// updates the location on canvas
+        /// </summary>
         public void UpdatePosition()
         {
             SetValue(Canvas.LeftProperty, bullet.PositionX);

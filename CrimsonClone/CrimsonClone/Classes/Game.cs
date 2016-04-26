@@ -1,4 +1,16 @@
-﻿using CrimsonClone.User_Controls;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using CrimsonClone.User_Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -146,6 +158,11 @@ namespace CrimsonClone.Classes
         /// required for game over stuff
         private GamePage gamePage;
 
+        /// <summary>
+        /// Game's constructor
+        /// </summary>
+        /// <param name="canvas">required for drawing/rendering things on their correct position</param>
+        /// <param name="gamePage">required for gameover</param>
         public Game(Canvas canvas, GamePage gamePage)
         {
             /// canvas and page initializing stuff for movement and whatnot

@@ -1,4 +1,16 @@
-﻿using CrimsonClone.Classes;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using CrimsonClone.Classes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,26 +34,29 @@ using Windows.UI.Xaml.Navigation;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Score page shows high scores
     /// </summary>
     public sealed partial class ScorePage : Page
     {
+        /// <summary>
+        /// List for high scores
+        /// </summary>
         private List<Player> players;
 
-        // This method is reading data from an exist file
+        /// This method reads data from an exist file
         private async void ReaderMethod()
         {
 
             try
             {
-                // Finding the file
+                /// Finding the file
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 Stream stream = await storageFolder.OpenStreamForReadAsync("highscores2.dat");
 
-                // Is the file empty?
+                /// Is the file empty?
                 if (stream == null) players = new List<Player>();
 
-                // Reading data
+                /// Reading data
                 DataContractSerializer serializer = new DataContractSerializer(typeof(List<Player>));
                 players = (List<Player>)serializer.ReadObject(stream);
                 ScoreBoardWriter();
@@ -52,6 +67,9 @@ namespace CrimsonClone
             }
         }
 
+        /// <summary>
+        /// Writes data into high-score text box
+        /// </summary>
         private void ScoreBoardWriter()
         {
             foreach (Player player in players)
@@ -61,21 +79,32 @@ namespace CrimsonClone
             }
         }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ScorePage()
         {
             this.InitializeComponent();
             //ReaderMethod();
         }
 
-
+        /// <summary>
+        /// This method is called when this page is navigated to
+        /// It calls for the file reader
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //base.OnNavigatedTo(e);
             ReaderMethod();
         }
 
-
-
+        /// <summary>
+        /// This method is called when "MainMenuButton" is clicked
+        /// It changes the page to main menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMenuButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
