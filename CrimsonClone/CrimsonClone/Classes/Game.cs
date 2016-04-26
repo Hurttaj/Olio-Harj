@@ -146,6 +146,11 @@ namespace CrimsonClone.Classes
         /// required for game over stuff
         private GamePage gamePage;
 
+        /// <summary>
+        /// Game's constructor
+        /// </summary>
+        /// <param name="canvas">required for drawing/rendering things on their correct position</param>
+        /// <param name="gamePage">required for gameover</param>
         public Game(Canvas canvas, GamePage gamePage)
         {
             /// canvas and page initializing stuff for movement and whatnot
