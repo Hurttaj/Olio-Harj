@@ -142,6 +142,9 @@
     <None Include="CrimsonClone_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\300xCrim.png" />
+    <Content Include="Assets\50xCrim.png" />
+    <Content Include="Assets\88xCrim.png" />
     <Content Include="Assets\DeathAudio.wav" />
     <Content Include="Assets\FireAudio.wav" />
     <Content Include="Properties\Default.rd.xml" />
