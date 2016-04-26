@@ -17,7 +17,11 @@ namespace CrimsonClone.Classes
 {
     class Game : INotifyPropertyChanged
     {
+
+        //Audio from: https://www.freesound.org/people/D%20W/sounds/143610/ No changes were made.
         private MediaElement fireAudio;
+
+        //Audio from: https://www.freesound.org/people/yottasounds/sounds/232135/ No changes were made.
         private MediaElement deathAudio;
 
         private async void FireSound()
