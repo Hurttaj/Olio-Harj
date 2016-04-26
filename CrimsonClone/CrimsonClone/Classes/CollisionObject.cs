@@ -13,14 +13,19 @@ namespace CrimsonClone
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
-    // Abstract class abandoned for being annoying.
+    /// <summary>
+    /// This is the master class for all colision objects (player, enemies, projectiles)
+    /// The class used to be abstract to prevent objects of it to be created, but it caused issues and thus was abandoned
+    /// </summary>
     public /*abstract*/ class CollisionObject
     {
-        // speed and radius properties. Marked private so I can exclude negative values.
-        // Theoretically using unsigned doubles would also work, but it would probably crash the game if these properties got a negative value.
+        /// <summary>
+        /// speed and radius properties. Marked private so I can exclude negative values.
+        /// Theoretically using unsigned doubles would also work, but it would probably crash the game if these properties got a negative value.
+        /// </summary>
         private double speed = 0;
         private double radius;
+
         // From the System.Numerics library. Seems like this is easier than having separate coordinate properties. The library contains
         // some functionality we would otherwise have to code ourselves.
         // Could add encapsulation to make sure Vector2 values cannot be out of bounds of the XAML canvas.
@@ -28,10 +33,11 @@ namespace CrimsonClone
         
         // 29.3 Disregard previous. Vector2 and the numerics library abandoned for being annoying.
 
+        /// position
         private float positionY;
         private float positionX;
 
-        // This just throws an exception if you try to give the speed property a negative value.
+        /// This just throws an exception if you try to give the speed property a negative value.
         public double Speed
         {
             get
@@ -43,7 +49,7 @@ namespace CrimsonClone
             }
         }
 
-        // Same as previous except for the radius property. The code is copypasted.
+        /// Same as previous except for the radius property. The code is copypasted.
         public double Radius
         {
             get
@@ -54,14 +60,15 @@ namespace CrimsonClone
                 else throw new System.ArgumentException("Cannot be negative.");
             }
         }
-
-        // Encapsulation for coordinate attributes. This ensures no object can leave the canvas.
+     
+        /// Property for Y-coordinate
         // Their possible positions are vo
         public float PositionY
         {
             get { return positionY; }
             set
             {
+                /// Limits for coordinate attributes. This ensures no object can leave the canvas.
                 if (value <= 600 - 2 * radius && value >= 0) positionY = value;
                 else if (value >= 600 - 2 * radius) positionY = 600 - 2 * (float)radius;
                 else if (value <= 0) positionY = 0;
@@ -69,6 +76,7 @@ namespace CrimsonClone
             }
         }
 
+        /// Property for X-coordinate
         public float PositionX
         {
             get { return positionX; }
@@ -81,12 +89,12 @@ namespace CrimsonClone
             }
         }
 
-        // Collision math. Basically, if the distance between the centers of the circles is smaller
-        // than the difference between radii, the circles necessarily intersect.
-        // It's a bool, so it returns a true/false value. So if this method returns true,
-        // we can have that trigger collision mechanics.
-        // http://rbwhitaker.wikidot.com/circle-collision-detection
-        // Object1.Collision(Object2)
+        /// Collision math. Basically, if the distance between the centers of the circles is smaller
+        /// than the difference between radius, the circles necessarily intersect.
+        /// It's a bool, so it returns a true/false value. So if this method returns true,
+        /// we can have that trigger collision mechanics.
+        /// http://rbwhitaker.wikidot.com/circle-collision-detection
+        /// Object1.Collision(Object2)
         // Revised collision math.
         // Revised again for x and y coordinates based code.
         // Math.Pow is a method that raises a given value to a power.
