@@ -56,15 +56,15 @@ namespace CrimsonClone
         {
             foreach (Player player in players)
             {
-                ScoresTextBlock.Text += player.points + " " + player.name + Environment.NewLine;
-                Debug.WriteLine("player & score:");
+                ScoresTextBlock.Text += player.Points + " " + player.Name + Environment.NewLine;
+                Debug.WriteLine("player & score:" + player.Points + " " + player.Name);
             }
         }
 
         public ScorePage()
         {
             this.InitializeComponent();
-           
+            ReaderMethod();
         }
 
 

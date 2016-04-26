@@ -27,12 +27,13 @@ namespace CrimsonClone
     public sealed partial class GameOverPage : Page
     {
         // Score Storing Variables
-        private List<int> scores = new List<int>();
+        //private List<int> scores = new List<int>();
         List<Player> players = new List<Player>();
+        List<Player> top10 = new List<Player>();
         Player player = new Player();
         public int Score { get; set; }
         public int Time { get; set; }
-        public string playerName { get; set; }
+        //public string playerName { get; set; }
 
         //private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
         //private StorageFile scoresFile;
@@ -64,14 +65,17 @@ namespace CrimsonClone
 
             // as the okButton pressed an object will be created
             Player player = new Player();
-            player.name = nameTextBox.Text;
-            player.points = Score;
+            player.Name = nameTextBox.Text;
+            //player.Name = Name;
+            player.Points = Score;
             players.Add(player);
-            players.Sort();
+            players.Sort((x, y) => x.Points.CompareTo(y.Points));
             players.Reverse();
-            int i = 0;
+            int i = 1;
             foreach (Player d in players)
             {
+                // moving player d to top10 list
+                top10.Add(d);
                 i++;
                 if (i >= 10) break; // only show 10 highest scores
             }
@@ -85,7 +89,7 @@ namespace CrimsonClone
                 // save players to disk
                 Stream stream = await scoresFile.OpenStreamForWriteAsync();
                 DataContractSerializer serializer = new DataContractSerializer(typeof(List<Player>));
-                serializer.WriteObject(stream, players);
+                serializer.WriteObject(stream, top10);
                 await stream.FlushAsync();
                 stream.Dispose();
             }
@@ -121,12 +125,19 @@ namespace CrimsonClone
             //base.OnNavigatedTo(e);
             if (e.Parameter is GamePage)
             {
+                // using GamePage so we can get it's parameters and stuff
                 GamePage gamePage = (GamePage)e.Parameter;
-                scoreTextBlock.Text = gamePage.Score.ToString();
-                timeTextBlock.Text = gamePage.Time.ToString();
+
+                // initializing stuff
+                Score = int.Parse(gamePage.Score.ToString());
+                scoreTextBlock.Text = Score.ToString();
+                Time = int.Parse(gamePage.Time.ToString());
+                timeTextBlock.Text = Time.ToString();
+
+                /*
                 foreach (int score in scores)
                 {
-                    if(int.Parse(gamePage.Score.ToString()) > score)
+                    if(Score > score)
                     {
                         scores.Add(int.Parse(gamePage.Score.ToString()));
                         break;
@@ -141,6 +152,7 @@ namespace CrimsonClone
                     i++;
                     if (i >= 10) break; // only show 10 highest scores
                 }
+                */
             }
         }
 

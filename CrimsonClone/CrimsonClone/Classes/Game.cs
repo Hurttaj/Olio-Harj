@@ -317,7 +317,7 @@ namespace CrimsonClone.Classes
                     enemies.Remove(enemy);
                     deathAudio.Play();
                     canvas.Children.Remove(enemy);
-                    Score += 10;
+                    Score += 100;
                     //Debug.WriteLine("Enemy removed");
                     //Debug.WriteLine("Tick" + (int)(2 + (tickCount / 300)));
                     //Debug.WriteLine("Rand" + spawnRand.Next(1, (int)(2 + ((tickCount+900)/ 1800))));

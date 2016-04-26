@@ -12,8 +12,8 @@ namespace CrimsonClone.Classes
     public class Player
     {
 
-        public string name { get; set; }
-        public int points { get; set; }
+        public string Name { get; set; }
+        public int Points { get; set; }
 
     }
 }

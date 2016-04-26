@@ -114,7 +114,12 @@
             </Grid> -->
 
             
-                <TextBlock x:Name="ScoresTextBlock" Width="200" Height="300" RelativePanel.RightOf="PlayButton" Margin="10" />
+                <TextBlock x:Name="ScoresTextBlock" 
+                           Width="200" Height="300" 
+                           RelativePanel.RightOf="PlayButton"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="10" />
             
 
             <Button x:Name="MainMenuButton" Content="Go to Main Menu"
