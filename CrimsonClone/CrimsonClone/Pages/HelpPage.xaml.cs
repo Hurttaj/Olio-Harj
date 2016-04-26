@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page contains application Help-info
     /// </summary>
     public sealed partial class HelpPage : Page
     {
@@ -27,6 +27,12 @@ namespace CrimsonClone
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Is called when "MainMenuButton" is clicked
+        /// moves to application's main page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMenuButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));

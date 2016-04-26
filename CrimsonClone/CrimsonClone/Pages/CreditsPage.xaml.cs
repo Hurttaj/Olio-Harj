@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page contains credits information
     /// </summary>
     public sealed partial class CreditsPage : Page
     {

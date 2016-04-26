@@ -19,10 +19,15 @@ using Windows.UI.Xaml.Navigation;
 namespace CrimsonClone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This is the first page of the application
+    /// It mainly acts as a hub-page to allow movement to other pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// Default constructor
+        /// Set's preferred window size
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
@@ -30,6 +35,13 @@ namespace CrimsonClone
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.PreferredLaunchViewSize = new Size(800, 600);
         }
+
+        /// <summary>
+        /// methods that are called when certain buttons are pressed
+        /// changes the frame to a related page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
