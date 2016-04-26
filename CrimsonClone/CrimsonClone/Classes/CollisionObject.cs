@@ -82,6 +82,7 @@ namespace CrimsonClone
             get { return positionX; }
             set
             {
+                /// Limits for coordinate attributes. This ensures no object can leave the canvas.
                 if (value <= 800 - 2 * radius && value >= 0) positionX = value;
                 else if (value >= 800 - 2 * radius) positionX = 800 - 2 * (float)radius;
                 else if (value <= 0) positionX = 0;
