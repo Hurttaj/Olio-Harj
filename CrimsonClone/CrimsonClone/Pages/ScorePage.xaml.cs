@@ -36,7 +36,7 @@ namespace CrimsonClone
             {
                 // Finding the file
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                Stream stream = await storageFolder.OpenStreamForReadAsync("highscore.dat");
+                Stream stream = await storageFolder.OpenStreamForReadAsync("highscores2.dat");
 
                 // Is the file empty?
                 if (stream == null) players = new List<Player>();
@@ -64,11 +64,15 @@ namespace CrimsonClone
         public ScorePage()
         {
             this.InitializeComponent();
-            ReaderMethod();
+            //ReaderMethod();
         }
 
 
-
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //base.OnNavigatedTo(e);
+            ReaderMethod();
+        }
 
 
 

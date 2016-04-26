@@ -61,7 +61,9 @@ namespace CrimsonClone
 
         private async void okButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ScorePage));
+            
+
+            //FileReader();
 
             // as the okButton pressed an object will be created
             Player player = new Player();
@@ -71,7 +73,7 @@ namespace CrimsonClone
             players.Add(player);
             players.Sort((x, y) => x.Points.CompareTo(y.Points));
             players.Reverse();
-            int i = 1;
+            int i = 0;
             foreach (Player d in players)
             {
                 // moving player d to top10 list
@@ -84,7 +86,7 @@ namespace CrimsonClone
             {
                 // Creating highscore.dat for storing scores
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile scoresFile = await storageFolder.CreateFileAsync("highscore.dat", CreationCollisionOption.OpenIfExists);
+                StorageFile scoresFile = await storageFolder.CreateFileAsync("highscores2.dat", CreationCollisionOption.ReplaceExisting);
 
                 // save players to disk
                 Stream stream = await scoresFile.OpenStreamForWriteAsync();
@@ -97,6 +99,8 @@ namespace CrimsonClone
             {
                 Debug.WriteLine("Following exception has happend (writing): " + ex.ToString());
             }
+
+            this.Frame.Navigate(typeof(ScorePage));
         }
 
         private async void FileReader()
@@ -105,7 +109,7 @@ namespace CrimsonClone
             {
                 // Finding the file
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                Stream stream = await storageFolder.OpenStreamForReadAsync("highscore.dat");
+                Stream stream = await storageFolder.OpenStreamForReadAsync("highscores2.dat");
 
                 // Is the file empty?
                 if(stream == null) players = new List<Player>();
