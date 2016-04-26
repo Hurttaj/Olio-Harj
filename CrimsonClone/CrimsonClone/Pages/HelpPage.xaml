@@ -64,7 +64,8 @@
             <Button x:Name="MainMenuButton" Content="Go to Main Menu"
                     Foreground="#FFEE9D4D"  
                     HorizontalAlignment="Center"
-                    Margin="10" Click="MainMenuButton_Click" BorderBrush="#FFA26A6A" Background="#FF990000"/>
+                    Margin="10" Click="MainMenuButton_Click" 
+                    BorderBrush="#FFA26A6A" Background="#FF990000"/>
         </StackPanel>
     </Grid>
 </Page>
