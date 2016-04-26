@@ -1,4 +1,16 @@
-﻿using CrimsonClone.Classes;
+﻿/*
+ * This is a part of a student project made in JAMK University of Applied Sciences
+ * Link to this project's GitHub:
+ * https://github.com/Hurttaj/Olio-Harj
+ * 
+ * Authors and their GitHub names:
+ * Borhan Amini (bhnamn)
+ * Hurtta Jussi (Hurttaj)
+ * Minkkilä Juuso (SlightHeadahce)
+ *
+ * Date: Spring 2016
+ */
+using CrimsonClone.Classes;
 using System;
 using System.Collections.Generic;
 using System.IO;
