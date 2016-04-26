@@ -98,7 +98,7 @@ namespace CrimsonClone.Classes
         public bool LMBPressed;
 
         
-        /// TickCount is simply the amount of ticks palyed; how many times the game loop has been completed
+        /// TickCount is simply the amount of ticks played; how many times the game loop has been completed
         // Starts at 900 so that the random spawn of enemies starts increasing 15 seconds in.
         // Moved the 900 to the rand itself.
         private int tickCount = 0;
