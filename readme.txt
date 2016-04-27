@@ -1,0 +1,1 @@
+Important comments are marked '///'. Comments with '//' or '/*---*/' are mainly remains of older code, excluding from author-things at the start of the file.
